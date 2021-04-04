@@ -37,5 +37,4 @@ jobs:
           SSH_KEY: ${{ secrets.SSH_KEY }}
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}
-      - run: |
-          ssh staging '~/scripts/deploy-skorinosgimnazija.sh'
+      - run: ssh staging '~/scripts/deploy-skorinosgimnazija.sh'
