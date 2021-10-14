@@ -1,8 +1,7 @@
 module.exports = {
   compress: false,
-  future: {
-    webpack5: true,
-  },
+  reactStrictMode: true,
+  poweredByHeader: false,
   images: {
     domains: ['static.skorinosgimnazija.lt'],
   },
