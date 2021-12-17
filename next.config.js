@@ -1,11 +1,22 @@
 module.exports = {
   swcMinify: true,
 
-  compress: false,
+  //compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
-    domains: ['static.skorinosgimnazija.lt'],
+    domains: ['static.skorinosgimnazija.lt', 'localhost'],
     formats: ['image/avif', 'image/webp'],
   },
+  i18n: {
+    locales: ['lt', 'by', 'en'],
+    defaultLocale: 'lt',
+    localeDetection: false,
+  },
+  rewrites: async () => [
+    {
+      source: '/sitemap.xml',
+      destination: '/api/sitemap',
+    },
+  ],
 };
