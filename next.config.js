@@ -13,10 +13,15 @@ module.exports = {
     defaultLocale: 'lt',
     localeDetection: false,
   },
-  rewrites: async () => [
-    {
-      source: '/sitemap.xml',
-      destination: '/api/sitemap',
-    },
-  ],
+  rewrites: async () => {
+    return {
+      beforeFiles: [
+        {
+          source: '/lt/sitemap.xml',
+          destination: '/api/sitemap',
+          locale: false,
+        },
+      ],
+    };
+  },
 };
