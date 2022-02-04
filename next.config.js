@@ -1,7 +1,6 @@
 module.exports = {
   swcMinify: true,
-
-  //compress: false,
+  compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
   images: {

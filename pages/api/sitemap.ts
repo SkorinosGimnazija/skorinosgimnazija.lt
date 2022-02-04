@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const handler = (_req: NextApiRequest, res: NextApiResponse) => {
+const sitemap = (_req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader('Content-Type', 'application/xml');
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
   res.write(
@@ -16,4 +16,4 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
   res.end();
 };
 
-export default handler;
+export default sitemap;

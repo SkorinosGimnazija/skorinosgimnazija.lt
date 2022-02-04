@@ -1,59 +1,30 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 import React from 'react';
-import styles from '../styles/Home.module.css';
+import { DefaultLayout } from '../layouts/DefaultLayout';
 
 const Home: NextPage = () => {
   return (
     <>
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <h1 className={styles.title}>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </h1>
-
-          <p className={styles.description}>
-            Get started by editing <code className={styles.code}>pages/index.js</code>
-          </p>
-
-          <div className={styles.grid}>
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h3>Documentation &rarr;</h3>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-
-            <a href="https://nextjs.org/learn" className={styles.card}>
-              <h3>Learn &rarr;</h3>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-
-            <a
-              href="https://github.com/vercel/next.js/tree/master/examples"
-              className={styles.card}
-            >
-              <h3>Examples &rarr;</h3>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-
-            <a
-              href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-            >
-              <h3>Deploy &rarr;</h3>
-              <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-            </a>
-          </div>
-        </main>
-
-        <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-          </a>
-        </footer>
-      </div>
+      <DefaultLayout>
+        <p className="text-2xl">Vilniaus Pranciškaus Skorinos gimnazija</p>
+        <p className="max-w-prose text-justify">
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+          been the industrys standard dummy text ever since the 1500s, when an unknown printer took
+          a galley of type and scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting, remaining essentially
+          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+          PageMaker including versions of Lorem Ipsum.
+        </p>
+        <p className="text-2xl">Гімназія імя Ф. Скарыны г. Вільнюса</p>
+        <p className="max-w-prose text-justify">
+          Лорем ипсум долор сит амет, иллуд алтера яуодси ин нец, еам еирмод аудиам ет. Цетеро
+          вивендум инсоленс ад еос. Доминг мнесарчум инцидеринт ад про, еа ипсум елигенди перципитур
+          усу, цибо елитр реформиданс цу цум. Еа атяуи волумус меа, меи ат цетеро апериам. Ид усу
+          делицата волуптатум. Про ин алияуам праесент, цу про молестиае хендрерит.
+        </p>
+      </DefaultLayout>
     </>
   );
 };
