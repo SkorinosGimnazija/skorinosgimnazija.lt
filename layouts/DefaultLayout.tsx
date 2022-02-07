@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Hero } from '../components/hero/Hero';
+import { Header } from '../components/header/Header';
 
 export const DefaultLayout: React.FC = ({ children }) => {
   return (
     <>
-      <Hero />
+      <Header />
       <main className="container">{children}</main>
     </>
   );

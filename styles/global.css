@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply overflow-x-hidden bg-gray-100;
+  }
+
+  @supports not (backdrop-filter: blur()) {
+    header > div {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    @apply drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)];
+  }
+}
