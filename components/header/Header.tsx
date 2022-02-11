@@ -7,7 +7,7 @@ import LogoImage from '../../assets/images/logo3.png';
 export const Header: React.FC = () => {
   return (
     <header className="relative h-[350px] w-full">
-      <div className="absolute flex min-h-[4rem] w-full flex-wrap items-center px-4 text-white backdrop-blur-sm">
+      <div className="absolute left-0 right-0 flex min-h-[4rem] w-full flex-wrap items-center  px-4 text-white backdrop-blur-sm">
         <h1 className="text-shadow mr-4 min-w-fit text-xl">
           Vilniaus Pranciškaus Skorinos gimnazija
         </h1>

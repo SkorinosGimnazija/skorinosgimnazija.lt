@@ -16,6 +16,6 @@
 
 @layer utilities {
   .text-shadow {
-    @apply drop-shadow-[2px_2px_2px_rgba(0,0,0,0.8)];
+    @apply drop-shadow-[0px_2px_2px_rgba(0,0,0,0.8)];
   }
 }

@@ -2,9 +2,10 @@
   "name": "skorinosgimnazija.lt",
   "private": true,
   "scripts": {
-    "dev:client": "next dev",
+    "dev:client": "next dev -p 3001",
     "dev:static": "node ../mokytojams.skorinosgimnazija.lt/dev-static-server.js",
     "dev:api": "dotnet run --project ../api.skorinosgimnazija.lt/src/API",
+    "dev:admin": "cd ../mokytojams.skorinosgimnazija.lt && npm run dev:client",
     "build": "next build",
     "start": "next start -p 5000"
   },
