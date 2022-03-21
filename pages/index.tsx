@@ -1,29 +1,37 @@
-import { NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
+import { Post } from '../components/post/Post';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  try {
+    const posts = await fetch(`http://localhost:5000/posts/public/${context.locale}/all`);
+    if (!posts.ok) {
+      console.log(posts);
+      return { notFound: true };
+    }
+
+    const json = await posts.json();
+
+    return {
+      props: {
+        posts: json,
+        revalidate: 60 * 60,
+      },
+    };
+  } catch (error) {
+    return { notFound: true };
+  }
+};
+
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   return (
     <>
       <DefaultLayout>
-        <p className="text-2xl">Vilniaus Pranciškaus Skorinos gimnazija</p>
-        <p className="max-w-prose text-justify">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-          been the industrys standard dummy text ever since the 1500s, when an unknown printer took
-          a galley of type and scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting, remaining essentially
-          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-          Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-          PageMaker including versions of Lorem Ipsum.
-        </p>
-        <p className="text-2xl">Гімназія імя Ф. Скарыны г. Вільнюса</p>
-        <p className="max-w-prose text-justify">
-          Лорем ипсум долор сит амет, иллуд алтера яуодси ин нец, еам еирмод аудиам ет. Цетеро
-          вивендум инсоленс ад еос. Доминг мнесарчум инцидеринт ад про, еа ипсум елигенди перципитур
-          усу, цибо елитр реформиданс цу цум. Еа атяуи волумус меа, меи ат цетеро апериам. Ид усу
-          делицата волуптатум. Про ин алияуам праесент, цу про молестиае хендрерит.
-        </p>
+        {posts.map((x) => {
+          return <Post key={x.id} data={x} />;
+        })}
       </DefaultLayout>
     </>
   );

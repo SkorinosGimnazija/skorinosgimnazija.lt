@@ -1,24 +1,39 @@
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import HeroImage from '../../assets/images/hero.jpg';
 import LogoImage from '../../assets/images/logo3.png';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export const Header: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section
       className="relative h-[350px] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${HeroImage.src})` }}
     >
-      <div className="backdrop-blur-sm">
-        <header className="flex min-h-[5rem] flex-wrap items-center px-4 text-white">
-          <h1 className="text-shadow mr-4 min-w-fit text-2xl">
-            Vilniaus Pranciškaus Skorinos gimnazija
-          </h1>
+      <div className="backdrop-blur-sm backdrop-saturate-50">
+        <header className="flex min-h-[4.2rem] flex-wrap items-center px-4 text-white">
+          <h1 className="text-shadow mr-4 min-w-fit text-2xl">{t.name}</h1>
           <div className="text-shadow flex flex-1 justify-end gap-3 text-lg">
-            <ol className="flex gap-3">
-              <li>LT</li>
-              <li>BY</li>
-              <li>EN</li>
-            </ol>
+            <ul className="flex gap-3">
+              <li>
+                <Link href="/" locale="lt">
+                  <a>LT</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/" locale="by">
+                  <a>BY</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/" locale="en">
+                  <a>EN</a>
+                </Link>
+              </li>
+            </ul>
             <span>A</span>
             <span>B</span>
           </div>
