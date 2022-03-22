@@ -1,38 +1,26 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
-import { Post } from '../components/post/Post';
+import { api } from '../api/api';
 import { DefaultLayout } from '../layouts/DefaultLayout';
+import { Post } from '../models/models';
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  try {
-    const posts = await fetch(`http://localhost:5000/posts/public/${context.locale}/all`);
-    if (!posts.ok) {
-      console.log(posts);
-      return { notFound: true };
-    }
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const [posts, menus] = await Promise.all([api.getPosts(locale), api.getMenus(locale)]);
 
-    const json = await posts.json();
-
-    return {
-      props: {
-        posts: json,
-        revalidate: 60 * 60,
-      },
-    };
-  } catch (error) {
-    return { notFound: true };
-  }
+  return {
+    props: {
+      posts,
+      menus,
+      revalidate: 60 * 60, // 1h
+    },
+  };
 };
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts, menus }) => {
   return (
     <>
-      <DefaultLayout>
-        {posts.map((x) => {
-          return <Post key={x.id} data={x} />;
-        })}
-      </DefaultLayout>
+      <DefaultLayout menus={menus}></DefaultLayout>
     </>
   );
 };

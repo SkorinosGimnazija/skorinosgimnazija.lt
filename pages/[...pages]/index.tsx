@@ -2,6 +2,8 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } fro
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import React from 'react';
+import { api } from '../../api/api';
+import { DefaultLayout } from '../../layouts/DefaultLayout';
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   return {
@@ -10,20 +12,22 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const path = encodeURIComponent('/' + (context.params.pages as string[]).join('/'));
-    const menu = await fetch('http://localhost:5000/menus/public/' + path);
-    if (!menu.ok) {
-      return { notFound: true };
-    }
+    const [post, menus] = await Promise.all([
+      api.getPostByPath(locale, params.pages),
+      api.getMenus(locale),
+    ]);
 
-    const json = await menu.json();
+    if (!post) {
+      throw new Error('Not found');
+    }
 
     return {
       props: {
-        post: json,
-        revalidate: 60 * 60,
+        post,
+        menus,
+        revalidate: 60 * 60, // 1h
       },
     };
   } catch (error) {
@@ -31,12 +35,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 };
 
-const Home1: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post }) => {
+const Home1: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post, menus }) => {
   return (
-    <div>
-      MENU
-      <pre>{JSON.stringify(post, null, 2)}</pre>
-    </div>
+    <DefaultLayout menus={menus}>
+      <div>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
+      </div>
+    </DefaultLayout>
   );
 };
 
