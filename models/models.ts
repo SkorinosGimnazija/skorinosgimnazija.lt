@@ -1,25 +1,39 @@
-export interface Language {
+export interface ILanguage {
   id: number;
   name: string;
   slug: string;
 }
 
-export interface Post {
+export interface IBanner {
+  id: number;
+  title: string;
+  url: string;
+  width: number;
+  height: number;
+  isPublished: boolean;
+  pictureUrl: string;
+  order: number;
+  language: ILanguage;
+}
+
+export interface IPost {
   id: number;
   isFeatured: boolean;
   isPublished: boolean;
   showInFeed: boolean;
   publishedAt: string;
   modifiedAt?: string | null;
-  language: Language;
+  language: ILanguage;
   slug: string;
   title: string;
   introText?: string | null;
+  text?: string | null;
   meta?: string | null;
   featuredImage?: string | null;
+  images?: string[];
 }
 
-export interface Menu {
+export interface IMenu {
   id: number;
   order: number;
   url?: string | null;
@@ -29,5 +43,5 @@ export interface Menu {
   path: string;
   isPublished: boolean;
   parentMenuId?: number | null;
-  childMenus: Menu[];
+  childMenus: IMenu[];
 }

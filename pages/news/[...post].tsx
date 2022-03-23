@@ -9,28 +9,35 @@ import {
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import React from 'react';
+import { api } from '../../api/api';
+import { Post } from '../../components/post/Post';
+import { DefaultLayout } from '../../layouts/DefaultLayout';
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   return {
     paths: [],
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const id = context.params.post?.[0];
-    const posts = await fetch('http://localhost:5000/posts/public/' + id);
-    if (!posts.ok) {
-      return { notFound: true };
-    }
+    const [post, menus, banners] = await Promise.all([
+      api.getPostById(params.post?.[0] ?? ''),
+      api.getMenus(locale),
+      api.getBanners(locale),
+    ]);
 
-    const json = await posts.json();
+    if (!post) {
+      throw new Error('Not found');
+    }
 
     return {
       props: {
-        post: json,
-        revalidate: 60 * 60,
+        post,
+        menus,
+        banners,
+        revalidate: 60 * 60, // 1h
       },
     };
   } catch (error) {
@@ -38,19 +45,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 };
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post }) => {
-  const r = useRouter();
-
-  if (r.isFallback) {
-    return <>LOADING</>;
-  }
-
+const NewsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  menus,
+  post,
+  banners,
+}) => {
   return (
-    <div>
-      POST
-      <pre>{JSON.stringify(post, null, 2)}</pre>
-    </div>
+    <DefaultLayout menus={menus} banners={banners}>
+      <Post post={post} />
+    </DefaultLayout>
   );
 };
 
-export default Home;
+export default NewsPage;

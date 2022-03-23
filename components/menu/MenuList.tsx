@@ -1,19 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Menu } from '../../models/models';
+import React from 'react';
+import { IMenu } from '../../models/models';
 import { MenuItem } from './MenuItem';
-import { Disclosure, Transition } from '@headlessui/react';
-import { ChevronUpIcon } from '@heroicons/react/solid';
-import gsap from 'gsap';
 
 interface Props {
-  menus: Menu[];
+  menus: IMenu[];
 }
 
 export const MenuList: React.FC<Props> = ({ menus }) => {
   return (
-    <nav className="w-96">
+    <nav className="rounded-lg bg-white p-4 shadow-md">
       <ul>
-        {menus.map((x) => {
+        {menus?.map((x) => {
           return <MenuItem key={x.id} menu={x} />;
         })}
       </ul>

@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply overflow-x-hidden bg-gray-100;
+    /* @apply overflow-x-hidden bg-gray-100; */
+    background-image: url('/qqq.svg');
   }
 
   @supports not (backdrop-filter: blur()) {

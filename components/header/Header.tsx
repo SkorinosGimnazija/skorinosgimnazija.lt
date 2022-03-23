@@ -13,9 +13,13 @@ export const Header: React.FC = () => {
       className="relative h-[350px] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${HeroImage.src})` }}
     >
-      <div className="backdrop-blur-sm backdrop-saturate-50">
+      <div className="relative z-10 w-full bg-[rgba(0,0,0,0.1)] backdrop-blur-sm">
         <header className="flex min-h-[4.2rem] flex-wrap items-center px-4 text-white">
-          <h1 className="text-shadow mr-4 min-w-fit text-2xl">{t.name}</h1>
+          <h1 className="text-shadow mr-4 min-w-fit font-serif text-2xl">
+            <Link href="/">
+              <a>{t.name}</a>
+            </Link>
+          </h1>
           <div className="text-shadow flex flex-1 justify-end gap-3 text-lg">
             <ul className="flex gap-3">
               <li>
@@ -40,7 +44,7 @@ export const Header: React.FC = () => {
         </header>
       </div>
       <img
-        className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 sm:left-52"
+        className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-52"
         src={LogoImage.src}
         alt="logo"
         width="175"

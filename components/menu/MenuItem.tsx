@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import React, { useEffect, useState, useRef } from 'react';
-import { Menu } from '../../models/models';
+import { IMenu } from '../../models/models';
 import gsap from 'gsap';
 
 interface Props {
   level?: number;
-  menu: Menu;
+  menu: IMenu;
 }
 
 export const MenuItem: React.FC<Props> = ({ menu, level }) => {

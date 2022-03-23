@@ -1,43 +1,31 @@
 import { GetStaticProps } from 'next';
 import React, { useEffect, useState, useRef } from 'react';
+import { BannerList } from '../components/banner/BannerList';
+import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { MenuList } from '../components/menu/MenuList';
-import { Menu } from '../models/models';
+import { IBanner, IMenu } from '../models/models';
 
 interface Props {
-  menus: Menu[];
+  menus: IMenu[];
+  banners: IBanner[];
 }
+import q from '../assets/bg/qq.svg';
+import qq from '../assets/bg/qqq.svg';
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  try {
-    const posts = await fetch(`http://localhost:5000/posts/public/${context.locale}/al1l`);
-    if (!posts.ok) {
-      console.log(posts);
-      return { notFound: true };
-    }
-
-    const json = await posts.json();
-
-    return {
-      props: {
-        posts: json,
-        revalidate: 60 * 60,
-      },
-    };
-  } catch (error) {
-    return { notFound: true };
-  }
-};
-
-export const DefaultLayout: React.FC<Props> = ({ children, menus }) => {
+export const DefaultLayout: React.FC<Props> = ({ children, menus, banners }) => {
   return (
     <>
       <Header />
-      <section className="container flex">
-        <main className="flex-1">{children}</main>
-        <aside className="p-4">
+      <section className="container relative -mt-12 flex flex-wrap">
+        <main className="lg:flex-1">{children}</main>
+        <aside className="w-full p-4 lg:max-w-sm">
           <MenuList menus={menus} />
+          <BannerList banners={banners} />
         </aside>
+      </section>
+      <section className="bg-gray-200">
+        <Footer />
       </section>
     </>
   );

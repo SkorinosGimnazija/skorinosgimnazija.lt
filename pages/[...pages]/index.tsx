@@ -1,22 +1,35 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import Head from 'next/head';
 import React from 'react';
 import { api } from '../../api/api';
+import { Post } from '../../components/post/Post';
 import { DefaultLayout } from '../../layouts/DefaultLayout';
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
+  const paths = [];
+
+  for await (const locale of locales ?? []) {
+    const rootMenus = await api.getMenus(locale);
+    const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus));
+
+    for (const menu of allMenus) {
+      if (!menu.childMenus?.length && !menu.url?.length) {
+        paths.push('/' + locale + menu.path);
+      }
+    }
+  }
+
   return {
-    paths: [],
+    paths,
     fallback: 'blocking',
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const [post, menus] = await Promise.all([
+    const [post, menus, banners] = await Promise.all([
       api.getPostByPath(locale, params.pages),
       api.getMenus(locale),
+      api.getBanners(locale),
     ]);
 
     if (!post) {
@@ -27,6 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       props: {
         post,
         menus,
+        banners,
         revalidate: 60 * 60, // 1h
       },
     };
@@ -35,15 +49,16 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   }
 };
 
-const Home1: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post, menus }) => {
+const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  post,
+  menus,
+  banners,
+}) => {
   return (
-    <DefaultLayout menus={menus}>
-      <div>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
-      </div>
+    <DefaultLayout menus={menus} banners={banners}>
+      <Post post={post} />
     </DefaultLayout>
   );
 };
 
-export default Home1;
+export default MenuPage;

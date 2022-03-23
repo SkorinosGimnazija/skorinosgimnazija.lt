@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Rubik', ...defaultTheme.fontFamily.sans],
+        serif: ['Vollkorn SC', ...defaultTheme.fontFamily.serif],
       },
     },
     container: {
