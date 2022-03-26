@@ -5,7 +5,6 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { IPost } from '../../models/models';
 import { toLocalDate, toLocalDateTime } from '../../utils/dateFormat';
 import { Markdown } from '../markdown/Markdown';
-import styles from './PreviewPost.module.css';
 
 interface Props {
   post: IPost;
@@ -21,9 +20,7 @@ export const PreviewPost: React.FC<Props> = ({ post }) => {
   return (
     <Link href={`/news/${post.id}/${post.slug}`}>
       <a title={post.title}>
-        <article
-          className={`${styles.article} m-4 flex max-w-5xl overflow-hidden rounded-lg  bg-[rgba(255,255,255,0.8)] shadow-md backdrop-blur-sm`}
-        >
+        <article className="m-4 flex max-w-5xl overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg">
           {post.featuredImage && (
             <div className="hidden min-w-[250px] overflow-hidden lg:block">
               <img

@@ -5,15 +5,38 @@ import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { MenuList } from '../components/menu/MenuList';
 import { IBanner, IMenu } from '../models/models';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import gsap from 'gsap';
+import { FooterWave } from '../components/footer/FooterWave';
 
 interface Props {
   menus: IMenu[];
   banners: IBanner[];
 }
-import q from '../assets/bg/qq.svg';
-import qq from '../assets/bg/qqq.svg';
 
 export const DefaultLayout: React.FC<Props> = ({ children, menus, banners }) => {
+  useEffect(() => {
+    gsap.fromTo(
+      'body',
+      {
+        backgroundPositionY: `0px`,
+        ease: 'none',
+        // scrollTrigger: {
+        //   // trigger: 'html',
+        //   scrub: 1,
+        // },
+      },
+      {
+        backgroundPositionY: `-500px`,
+        ease: 'none',
+        scrollTrigger: {
+          // trigger: 'html',
+          scrub: 3,
+        },
+      }
+    );
+  }, []);
+
   return (
     <>
       <Header />
@@ -24,6 +47,7 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners }) => 
           <BannerList banners={banners} />
         </aside>
       </section>
+      {/* <FooterWave /> */}
       <section className="bg-gray-200">
         <Footer />
       </section>

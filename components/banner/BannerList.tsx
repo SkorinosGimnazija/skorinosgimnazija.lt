@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { IBanner } from '../../models/models';
 
 interface Props {
@@ -8,14 +8,17 @@ interface Props {
 
 export const BannerList: React.FC<Props> = ({ banners }) => {
   return (
-    <div className="hidden pt-10 md:block">
+    <div className="mt-8">
       {banners?.map((x) => {
         return (
-          <div key={x.id} className="my-4 overflow-hidden rounded-lg bg-white shadow-md">
+          <div
+            key={x.id}
+            className="my-4 overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg"
+          >
             <Link href={x.url}>
               <a target="_blank" rel="noreferrer noopener" title={x.title}>
                 <img
-                  className="mx-auto p-2"
+                  className="mx-auto px-2 py-4 transition-transform duration-300 hover:scale-105"
                   src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${x.pictureUrl}`}
                   width={x.width}
                   height={x.height}

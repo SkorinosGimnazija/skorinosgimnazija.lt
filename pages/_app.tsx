@@ -1,6 +1,10 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import '../styles/global.css';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import gsap from 'gsap';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

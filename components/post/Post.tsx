@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { IPost } from '../../models/models';
 import { toLocalDate, toLocalDateTime } from '../../utils/dateFormat';
+import { Carousel } from '../carousel/Carousel';
 import { Markdown } from '../markdown/Markdown';
 
 interface Props {
@@ -18,28 +19,23 @@ export const Post: React.FC<Props> = ({ post }) => {
   }
 
   return (
-    <article className="m-4 flex max-w-5xl overflow-hidden rounded-lg bg-white shadow-md">
+    <article className="m-4 flex max-w-5xl overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg">
       <div className="p-8">
         <h1 className="text-2xl">{post.title}</h1>
         <p className="text-sm text-gray-500">
-          <span>{toLocalDate(post.publishedAt)}</span>
+          <time dateTime={post.publishedAt}>{toLocalDate(post.publishedAt)}</time>
           {post.modifiedAt && (
-            <span>
+            <>
               {' '}
-              ({t.modified} {toLocalDate(post.modifiedAt)})
-            </span>
+              ({t.modified} {<time dateTime={post.modifiedAt}>{toLocalDate(post.modifiedAt)}</time>}
+              )
+            </>
           )}
         </p>
         <div className="mt-6 text-justify text-lg">
           <Markdown>{post.text}</Markdown>
         </div>
-        {post.images?.length && (
-          <div className="pt-8">
-            {post.images.map((src, id) => {
-              return <img key={id} src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${src}`} alt="" />;
-            })}
-          </div>
-        )}
+        <Carousel images={post.images} />
       </div>
     </article>
   );

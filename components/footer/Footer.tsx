@@ -6,8 +6,8 @@ interface Props {}
 export const Footer: React.FC<Props> = () => {
   const { t, locale } = useTranslation();
   return (
-    <footer className="mt-14 flex flex-wrap justify-around border-t-2 border-gray-300 py-14">
-      <div className="max-w-sm">
+    <footer className="relative flex flex-col items-center gap-8 py-20 md:flex-row md:justify-around">
+      <div className="max-w-sm text-center md:text-left">
         {locale === 'lt' && (
           <>
             <p>
@@ -20,7 +20,7 @@ export const Footer: React.FC<Props> = () => {
           </>
         )}
       </div>
-      <address>
+      <address className="text-center md:text-right">
         <p>{t.name}</p>
         <p>{t.address}</p>
         <p>{t.phone}</p>

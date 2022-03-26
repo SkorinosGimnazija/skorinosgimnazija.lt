@@ -8,7 +8,7 @@ interface Props {
 
 export const MenuList: React.FC<Props> = ({ menus }) => {
   return (
-    <nav className="rounded-lg bg-white p-4 shadow-md">
+    <nav className="overflow-hidden rounded-lg bg-white bg-opacity-80 py-4 shadow-md backdrop-blur-lg">
       <ul>
         {menus?.map((x) => {
           return <MenuItem key={x.id} menu={x} />;
