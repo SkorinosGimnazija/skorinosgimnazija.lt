@@ -32,8 +32,6 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
     <>
       <DefaultLayout menus={menus} banners={banners}>
         <PostsList posts={posts} />
-        <PostsList posts={posts} />
-        <PostsList posts={posts} />
       </DefaultLayout>
     </>
   );

@@ -8,7 +8,7 @@ interface Props {
 
 export const PostsList: React.FC<Props> = ({ posts }) => {
   return (
-    <div>
+    <div className="mb-4 space-y-4 lg:space-y-8">
       {posts?.map((x) => {
         return <PreviewPost key={x.id} post={x} />;
       })}

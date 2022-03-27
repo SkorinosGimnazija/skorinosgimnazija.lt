@@ -40,7 +40,7 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners }) => 
   return (
     <>
       <Header />
-      <section className="container relative -mt-12 flex flex-wrap">
+      <section className="container relative -mt-12 flex flex-col-reverse flex-wrap lg:flex-row">
         <main className="lg:flex-1">{children}</main>
         <aside className="w-full p-4 lg:max-w-sm">
           <MenuList menus={menus} />

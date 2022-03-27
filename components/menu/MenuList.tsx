@@ -10,9 +10,11 @@ export const MenuList: React.FC<Props> = ({ menus }) => {
   return (
     <nav className="overflow-hidden rounded-lg bg-white bg-opacity-80 py-4 shadow-md backdrop-blur-lg">
       <ul>
-        {menus?.map((x) => {
-          return <MenuItem key={x.id} menu={x} />;
-        })}
+        {menus
+          ?.filter((x) => x.position === 'side')
+          .map((x) => {
+            return <MenuItem key={x.id} menu={x} />;
+          })}
       </ul>
     </nav>
   );

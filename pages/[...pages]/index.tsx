@@ -56,7 +56,7 @@ const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <DefaultLayout menus={menus} banners={banners}>
-      <Post post={post} />
+      <Post post={post} hideDate />
     </DefaultLayout>
   );
 };

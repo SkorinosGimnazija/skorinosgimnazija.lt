@@ -16,6 +16,10 @@
     @apply scale-110;
   }
 
+  article p {
+    margin-bottom: 0.5rem;
+  }
+
   .footer1::before {
     /* wave */
     @apply absolute inset-x-0 -z-10 bg-cover bg-bottom bg-no-repeat;

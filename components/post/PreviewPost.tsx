@@ -5,6 +5,8 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { IPost } from '../../models/models';
 import { toLocalDate, toLocalDateTime } from '../../utils/dateFormat';
 import { Markdown } from '../markdown/Markdown';
+import { PostDate } from './PostDate';
+import { PostFeaturedImage } from './PostFeaturedImage';
 
 interface Props {
   post: IPost;
@@ -19,30 +21,12 @@ export const PreviewPost: React.FC<Props> = ({ post }) => {
 
   return (
     <Link href={`/news/${post.id}/${post.slug}`}>
-      <a title={post.title}>
-        <article className="m-4 flex max-w-5xl overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg">
-          {post.featuredImage && (
-            <div className="hidden min-w-[250px] overflow-hidden lg:block">
-              <img
-                className="h-full w-full object-cover transition-transform duration-500 ease-out"
-                width={250}
-                height={250}
-                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${post.featuredImage}`}
-                alt={post.title}
-              />
-            </div>
-          )}
-          <div className="p-4">
+      <a className="m-4 block" title={post.title}>
+        <article className="flex overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg">
+          <PostFeaturedImage src={post.featuredImage} alt={post.title} />
+          <div className="flex-1 p-4">
             <h1 className="text-2xl">{post.title}</h1>
-            <p className="text-sm text-gray-500">
-              <span>{toLocalDate(post.publishedAt)}</span>
-              {post.modifiedAt && (
-                <span>
-                  {' '}
-                  ({t.modified} {toLocalDate(post.modifiedAt)})
-                </span>
-              )}
-            </p>
+            <PostDate published={post.publishedAt} modified={post.modifiedAt} />
             <div className="mt-4 text-lg">
               <Markdown>{post.introText}</Markdown>
             </div>

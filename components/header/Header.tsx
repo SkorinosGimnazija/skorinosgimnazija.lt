@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
         </header>
       </div>
       <img
-        className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-52"
+        className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-64"
         src={LogoImage.src}
         alt="logo"
         width="175"

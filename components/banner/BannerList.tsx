@@ -13,7 +13,7 @@ export const BannerList: React.FC<Props> = ({ banners }) => {
         return (
           <div
             key={x.id}
-            className="my-4 overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg"
+            className="my-4 hidden overflow-hidden rounded-lg bg-white bg-opacity-80 shadow-md backdrop-blur-lg lg:block"
           >
             <Link href={x.url}>
               <a target="_blank" rel="noreferrer noopener" title={x.title}>
