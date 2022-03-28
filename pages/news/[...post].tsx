@@ -11,6 +11,7 @@ import Head from 'next/head';
 import React from 'react';
 import { api } from '../../api/api';
 import { Post } from '../../components/post/Post';
+import { Seo } from '../../components/seo/Seo';
 import { DefaultLayout } from '../../layouts/DefaultLayout';
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
@@ -52,6 +53,7 @@ const NewsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <DefaultLayout menus={menus} banners={banners}>
+      <Seo post={post} />
       <Post post={post} />
     </DefaultLayout>
   );

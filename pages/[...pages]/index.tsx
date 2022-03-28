@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } fro
 import React from 'react';
 import { api } from '../../api/api';
 import { Post } from '../../components/post/Post';
+import { Seo } from '../../components/seo/Seo';
 import { DefaultLayout } from '../../layouts/DefaultLayout';
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
@@ -56,6 +57,7 @@ const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 }) => {
   return (
     <DefaultLayout menus={menus} banners={banners}>
+      <Seo post={post} />
       <Post post={post} hideDate />
     </DefaultLayout>
   );

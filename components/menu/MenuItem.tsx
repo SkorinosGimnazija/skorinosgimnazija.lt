@@ -11,24 +11,35 @@ interface Props {
 
 export const MenuItem: React.FC<Props> = ({ menu }) => {
   const { asPath } = useRouter();
-  const isExpandable = menu.childMenus.length > 0;
   const isExpanded = useRef(asPath.startsWith(menu.path));
   const expandableRef = useRef<HTMLUListElement>();
   const chevronRef = useRef<HTMLSpanElement>();
+  const isExpandable = menu.childMenus.length > 0;
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleClick = (e?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (!isExpandable) {
       return;
     }
 
-    gsap.to(
-      expandableRef.current,
-      isExpanded.current ? { height: 0, x: 0 } : { height: 'auto', x: 20 }
-    );
-    gsap.to(chevronRef.current, isExpanded.current ? { rotateY: 0 } : { rotateY: 180 });
+    if (isExpanded.current) {
+      gsap.to(expandableRef.current, { height: 0, x: 0 });
+      gsap.to(chevronRef.current, { rotateY: 0 });
+      isExpanded.current = false;
+    } else {
+      gsap.to(expandableRef.current, { height: 'auto', x: 20 });
+      gsap.to(chevronRef.current, { rotateY: 180 });
+      isExpanded.current = true;
+    }
 
-    isExpanded.current = !isExpanded.current;
-    e.preventDefault();
+    e?.preventDefault();
+  };
+
+  const forceExpand = () => {
+    if (isExpanded.current) {
+      return;
+    }
+
+    handleClick();
   };
 
   return (
@@ -42,10 +53,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
           >
             {menu.title}
             {isExpandable && (
-              <span
-                ref={chevronRef}
-                className={`-rotate-90 text-2xl ${isExpanded.current ? '' : ''}`}
-              >
+              <span ref={chevronRef} className="rotate-90 text-2xl">
                 <MdChevronRight />
               </span>
             )}
@@ -63,7 +71,11 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
               return (
                 <li key={submenu.id} className="hover:text-gray-500">
                   <Link href={submenu.url ?? submenu.path}>
-                    <a className="block py-1" target={submenu.url ? '_blank' : '_self'}>
+                    <a
+                      onFocus={forceExpand}
+                      className="my-1 block"
+                      target={submenu.url ? '_blank' : '_self'}
+                    >
                       {submenu.title}
                     </a>
                   </Link>

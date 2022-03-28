@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { api } from '../api/api';
 import { PostsList } from '../components/post/PostsList';
+import { Seo } from '../components/seo/Seo';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import { IPost } from '../models/models';
 
@@ -31,6 +32,7 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <DefaultLayout menus={menus} banners={banners}>
+        <Seo />
         <PostsList posts={posts} />
       </DefaultLayout>
     </>
