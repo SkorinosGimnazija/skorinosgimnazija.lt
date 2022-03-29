@@ -45,3 +45,12 @@ export interface IMenu {
   parentMenuId?: number | null;
   childMenus: IMenu[];
 }
+
+export interface IEvent {
+  id: string;
+  title: string;
+  startDate?: string | null;
+  startDateTime?: string | null;
+  endDate?: string | null;
+  endDateTime?: string | null;
+}

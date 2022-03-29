@@ -23,10 +23,11 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const [post, menus, banners] = await Promise.all([
+    const [post, menus, banners, events] = await Promise.all([
       api.getPostById(params.post?.[0] ?? ''),
       api.getMenus(locale),
       api.getBanners(locale),
+      api.getEvents(0),
     ]);
 
     if (!post) {
@@ -38,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         post,
         menus,
         banners,
+        events,
         revalidate: 60 * 60, // 1h
       },
     };
@@ -50,9 +52,10 @@ const NewsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   menus,
   post,
   banners,
+  events,
 }) => {
   return (
-    <DefaultLayout menus={menus} banners={banners}>
+    <DefaultLayout menus={menus} banners={banners} events={events}>
       <Seo post={post} />
       <Post post={post} />
     </DefaultLayout>

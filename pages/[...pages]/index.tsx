@@ -27,10 +27,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const [post, menus, banners] = await Promise.all([
+    const [post, menus, banners, events] = await Promise.all([
       api.getPostByPath(locale, params.pages),
       api.getMenus(locale),
       api.getBanners(locale),
+      api.getEvents(0),
     ]);
 
     if (!post) {
@@ -42,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         post,
         menus,
         banners,
+        events,
         revalidate: 60 * 60, // 1h
       },
     };
@@ -54,9 +56,10 @@ const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   post,
   menus,
   banners,
+  events,
 }) => {
   return (
-    <DefaultLayout menus={menus} banners={banners}>
+    <DefaultLayout menus={menus} banners={banners} events={events}>
       <Seo post={post} />
       <Post post={post} hideDate />
     </DefaultLayout>

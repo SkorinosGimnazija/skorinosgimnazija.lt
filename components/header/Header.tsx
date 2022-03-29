@@ -38,8 +38,6 @@ export const Header: React.FC = () => {
                 </Link>
               </li>
             </ul>
-            <span>A</span>
-            <span>B</span>
           </div>
         </header>
       </div>

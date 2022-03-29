@@ -1,4 +1,4 @@
-import { IBanner, IMenu, IPost } from '../models/models';
+import { IBanner, IEvent, IMenu, IPost } from '../models/models';
 
 class Api {
   private async fetch(url: string) {
@@ -34,6 +34,11 @@ class Api {
   public async getBanners(locale: string) {
     const menus = await this.fetch(`/banners/public/${locale}`);
     return menus as IBanner[];
+  }
+
+  public async getEvents(week: number) {
+    const events = await this.fetch(`/events/public/${week}`);
+    return events as IEvent[];
   }
 }
 

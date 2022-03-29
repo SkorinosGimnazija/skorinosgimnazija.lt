@@ -1,9 +1,18 @@
-const ltDateFormat = new Intl.DateTimeFormat('lt', {
+const ltDateFormat = new Intl.DateTimeFormat('lt-LT', {
   dateStyle: 'short',
 });
 
-const ltDateTimeFormat = new Intl.DateTimeFormat('lt', {
+const ltDateTimeFormat = new Intl.DateTimeFormat('lt-LT', {
   dateStyle: 'short',
+  timeStyle: 'short',
+});
+
+const ltEventDateFormat = new Intl.DateTimeFormat('lt-LT', {
+  dateStyle: 'long',
+});
+
+const ltEventDateTimeFormat = new Intl.DateTimeFormat('lt-LT', {
+  dateStyle: 'long',
   timeStyle: 'short',
 });
 
@@ -35,4 +44,28 @@ export const toLocalDateTime: LocalDate = (date?: Date | string | null) => {
   }
 
   return ltDateTimeFormat.format(date);
+};
+
+export const toEventLocalDate: LocalDate = (date?: Date | string | null) => {
+  if (!date) {
+    return null as any;
+  }
+
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  return ltEventDateFormat.format(date).substring(8);
+};
+
+export const toEventLocalDateTime: LocalDate = (date?: Date | string | null) => {
+  if (!date) {
+    return null as any;
+  }
+
+  if (typeof date === 'string') {
+    date = new Date(date);
+  }
+
+  return ltEventDateTimeFormat.format(date).substring(8);
 };

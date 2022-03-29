@@ -1,7 +1,6 @@
 import gsap, { Expo } from 'gsap';
 import React, { useRef, useState } from 'react';
-import { CarouselNextButton } from './CarouselNextButton';
-import { CarouselPrevButton } from './CarouselPrevButton';
+import { CarouselButton } from './CarouselButton';
 import { CarouselSwitcher } from './CarouselSwitcher';
 
 interface Props {
@@ -60,8 +59,8 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           </li>
         );
       })}
-      <CarouselNextButton onClick={handleClick(1)} />
-      <CarouselPrevButton onClick={handleClick(-1)} />
+      <CarouselButton onClick={handleClick(-1)} left />
+      <CarouselButton onClick={handleClick(1)} />
       <CarouselSwitcher
         items={images}
         currentIndex={currentImageIndex}
