@@ -7,7 +7,6 @@ import { MenuList } from '../components/menu/MenuList';
 import { IBanner, IEvent, IMenu } from '../models/models';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import gsap from 'gsap';
-import { FooterWave } from '../components/footer/FooterWave';
 import { EventList } from '../components/events/EventList';
 
 interface Props {
@@ -18,31 +17,35 @@ interface Props {
 
 export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, events }) => {
   useEffect(() => {
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       'body',
       {
         backgroundPositionY: `0px`,
         ease: 'none',
-        // scrollTrigger: {
-        //   // trigger: 'html',
-        //   scrub: 1,
-        // },
+        scrollTrigger: {
+          trigger: 'html',
+          scrub: 4,
+        },
       },
       {
-        backgroundPositionY: `-500px`,
+        backgroundPositionY: `-${window.innerHeight / 2}px`,
         ease: 'none',
         scrollTrigger: {
-          // trigger: 'html',
-          scrub: 3,
+          trigger: 'html',
+          scrub: 4,
         },
       }
     );
+
+    () => {
+      animation.kill();
+    };
   }, []);
 
   return (
     <>
       <Header />
-      <section className="container relative -mt-12 flex flex-col-reverse flex-wrap lg:flex-row">
+      <section className="container relative -mt-12 flex flex-col-reverse flex-wrap lg:flex-row xl:px-20">
         <main className="lg:flex-1">{children}</main>
         <aside className="w-full p-4 lg:max-w-sm">
           <MenuList menus={menus} />
@@ -50,7 +53,6 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, event
           <BannerList banners={banners} />
         </aside>
       </section>
-      {/* <FooterWave /> */}
       <section className="bg-gray-200">
         <Footer />
       </section>

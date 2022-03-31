@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import React, { useEffect, useState, useRef } from 'react';
-import { IMenu } from '../../models/models';
 import gsap from 'gsap';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React, { useRef } from 'react';
 import { MdChevronRight } from 'react-icons/md';
+import { IMenu } from '../../models/models';
 
 interface Props {
   menu: IMenu;
@@ -15,6 +15,13 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
   const expandableRef = useRef<HTMLUListElement>();
   const chevronRef = useRef<HTMLSpanElement>();
   const isExpandable = menu.childMenus.length > 0;
+
+  React.useEffect(() => {
+    if (isExpanded.current) {
+      // gsap.set(expandableRef.current, { height: 'auto', x: 20 });
+      gsap.set(chevronRef.current, { rotateY: 180 });
+    }
+  }, []);
 
   const handleClick = (e?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     if (!isExpandable) {
@@ -50,6 +57,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
             className="flex justify-between px-6 py-2"
             onClick={handleClick}
             target={menu.url ? '_blank' : '_self'}
+            rel={menu.url ? 'noreferrer noopener' : null}
           >
             {menu.title}
             {isExpandable && (
@@ -62,10 +70,8 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
         {isExpandable && (
           <ul
             ref={expandableRef}
-            className="overflow-hidden pl-5 pr-14"
-            style={
-              isExpanded.current ? { height: 'auto', transform: 'translate(20px)' } : { height: 0 }
-            }
+            className="h-0 overflow-hidden pl-5 pr-14"
+            style={isExpanded.current ? { height: 'auto', transform: 'translate(20px)' } : null}
           >
             {menu.childMenus.map((submenu) => {
               return (
@@ -75,6 +81,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
                       onFocus={forceExpand}
                       className="my-1 block"
                       target={submenu.url ? '_blank' : '_self'}
+                      rel={submenu.url ? 'noreferrer noopener' : null}
                     >
                       {submenu.title}
                     </a>
