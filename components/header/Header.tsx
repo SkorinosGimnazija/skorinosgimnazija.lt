@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import HeroImage from '../../assets/images/hero.jpg';
-import LogoImage from '../../assets/images/logo3.png';
+import LogoImage from '../../assets/images/logo-small.png';
 import { useTranslation } from '../../hooks/useTranslation';
 
 export const Header: React.FC = () => {

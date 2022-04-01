@@ -21,7 +21,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       menus,
       banners,
       events,
-      revalidate: 60 * 60, // 1h
+      //revalidate: 60 * 60, // 1h
+      revalidate: 60,
     },
   };
 };
