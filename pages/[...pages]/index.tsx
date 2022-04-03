@@ -8,16 +8,16 @@ import { DefaultLayout } from '../../layouts/DefaultLayout';
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = [];
 
-  for await (const locale of locales ?? []) {
-    const rootMenus = await api.getMenus(locale);
-    const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus));
+  // for await (const locale of locales ?? []) {
+  //   const rootMenus = await api.getMenus(locale);
+  //   const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus));
 
-    for (const menu of allMenus) {
-      if (!menu.childMenus?.length && !menu.url?.length) {
-        paths.push('/' + locale + menu.path);
-      }
-    }
-  }
+  //   for (const menu of allMenus) {
+  //     if (!menu.childMenus?.length && !menu.url?.length) {
+  //       paths.push('/' + locale + menu.path);
+  //     }
+  //   }
+  // }
 
   return {
     paths,
@@ -59,7 +59,7 @@ const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   events,
 }) => {
   return (
-    <DefaultLayout menus={menus} banners={banners} events={events}>
+    <DefaultLayout menus={menus} banners={banners}>
       <Seo post={post} />
       <Post post={post} hideDate />
     </DefaultLayout>
