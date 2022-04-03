@@ -16,31 +16,31 @@ interface Props {
 }
 
 export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, events }) => {
-  useEffect(() => {
-    const animation = gsap.fromTo(
-      'body',
-      {
-        backgroundPositionY: `0px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: 'html',
-          scrub: 4,
-        },
-      },
-      {
-        backgroundPositionY: `-${window.innerHeight / 2}px`,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: 'html',
-          scrub: 4,
-        },
-      }
-    );
+  // useEffect(() => {
+  //   const animation = gsap.fromTo(
+  //     'body',
+  //     {
+  //       backgroundPositionY: `0px`,
+  //       ease: 'none',
+  //       scrollTrigger: {
+  //         trigger: 'html',
+  //         scrub: 4,
+  //       },
+  //     },
+  //     {
+  //       backgroundPositionY: `-${window.innerHeight / 2}px`,
+  //       ease: 'none',
+  //       scrollTrigger: {
+  //         trigger: 'html',
+  //         scrub: 4,
+  //       },
+  //     }
+  //   );
 
-    () => {
-      animation.kill();
-    };
-  }, []);
+  //   () => {
+  //     animation.kill();
+  //   };
+  // }, []);
 
   return (
     <>
