@@ -1,5 +1,6 @@
 import React from 'react';
 import MarkdownJsx from 'markdown-to-jsx';
+import { PostLink } from './PostLink';
 
 interface Props {
   children?: string | null;
@@ -12,18 +13,11 @@ export const Markdown: React.FC<Props> = ({ children }) => {
 
   return (
     <MarkdownJsx
-      options={
-        {
-          // overrides: {
-          //   img: {
-          //     component: MyImage,
-          //     props: {
-          //       // props: 'foo',
-          //     },
-          //   },
-          // },
-        }
-      }
+      options={{
+        overrides: {
+          a: { component: PostLink },
+        },
+      }}
     >
       {children}
     </MarkdownJsx>
