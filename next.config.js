@@ -1,10 +1,10 @@
 module.exports = {
-  swcMinify: true,
-  compress: false,
+  // swcMinify: true,
+  // compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
-    domains: ['static.skorinosgimnazija.lt', 'localhost'],
+    domains: ['localhost', process.env.NEXT_PUBLIC_STATIC_URL],
     formats: ['image/avif', 'image/webp'],
   },
   i18n: {
