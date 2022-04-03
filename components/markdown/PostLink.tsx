@@ -13,7 +13,7 @@ export const PostLink: React.FC<Props> = ({ children, href }) => {
   return (
     <Link href={href}>
       <a
-        className="flex items-center text-blue-600 hover:text-blue-400 hover:underline"
+        className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:underline"
         target={isLocal ? null : '_blank'}
         rel={isLocal ? null : 'noreferrer noopener'}
       >
