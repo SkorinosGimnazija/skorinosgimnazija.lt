@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn+SC&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn+SC&display=swap"
             rel="stylesheet"
           />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
