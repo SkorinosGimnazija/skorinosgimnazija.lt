@@ -40,8 +40,8 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
         menus,
         banners,
         events,
-        revalidate: 60 * 60, // 1h
       },
+      revalidate: 60 * 60, // 1h
     };
   } catch (error) {
     return { notFound: true };
