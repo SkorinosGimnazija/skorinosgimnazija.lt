@@ -17,10 +17,11 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
   const isExpandable = menu.childMenus.length > 0;
 
   React.useEffect(() => {
-    if (isExpanded.current) {
+    if (isExpandable && isExpanded.current) {
       // gsap.set(expandableRef.current, { height: 'auto', x: 20 });
       gsap.set(chevronRef.current, { rotateY: 180 });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = (e?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
