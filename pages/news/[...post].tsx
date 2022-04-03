@@ -55,7 +55,7 @@ const NewsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   events,
 }) => {
   return (
-    <DefaultLayout menus={menus} banners={banners} events={events}>
+    <DefaultLayout menus={menus} banners={banners}>
       <Seo post={post} />
       <Post post={post} />
     </DefaultLayout>

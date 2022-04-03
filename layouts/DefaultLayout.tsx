@@ -12,7 +12,7 @@ import { EventList } from '../components/events/EventList';
 interface Props {
   menus: IMenu[];
   banners: IBanner[];
-  events: IEvent[];
+  events?: IEvent[];
 }
 
 export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, events }) => {
