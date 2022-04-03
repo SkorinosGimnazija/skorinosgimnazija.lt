@@ -55,7 +55,8 @@ export const toEventLocalDate: LocalDate = (date?: Date | string | null) => {
     date = new Date(date);
   }
 
-  return ltEventDateFormat.format(date).substring(8);
+  const formated = ltEventDateFormat.format(date).slice(8);
+  return formated[0].toUpperCase() + formated.slice(1);
 };
 
 export const toEventLocalDateTime: LocalDate = (date?: Date | string | null) => {
@@ -67,5 +68,6 @@ export const toEventLocalDateTime: LocalDate = (date?: Date | string | null) => 
     date = new Date(date);
   }
 
-  return ltEventDateTimeFormat.format(date).substring(8);
+  const formated = ltEventDateTimeFormat.format(date).slice(8);
+  return formated[0].toUpperCase() + formated.slice(1);
 };

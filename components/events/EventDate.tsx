@@ -8,7 +8,7 @@ interface Props {
 
 export const EventDate: React.FC<Props> = ({ date, dateTime }) => {
   return (
-    <time className="inline-block first-letter:uppercase" dateTime={date ?? dateTime}>
+    <time dateTime={date ?? dateTime}>
       {toEventLocalDate(date) ?? toEventLocalDateTime(dateTime)}
     </time>
   );
