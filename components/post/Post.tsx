@@ -23,7 +23,7 @@ export const Post: React.FC<Props> = ({ post, hideDate }) => {
       <div className="w-full p-8">
         <h1 className="text-2xl">{post.title}</h1>
         <PostDate published={post.publishedAt} modified={post.modifiedAt} hide={hideDate} />
-        <div className="mt-6 text-justify text-lg">
+        <div className="mt-6 text-lg">
           <Markdown>{post.text}</Markdown>
         </div>
         <Carousel images={post.images} />

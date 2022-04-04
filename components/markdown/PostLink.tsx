@@ -17,7 +17,7 @@ export const PostLink: React.FC<Props> = ({ children, href }) => {
         target={isLocal ? null : '_blank'}
         rel={isLocal ? null : 'noreferrer noopener'}
       >
-        {isDoc && <HiOutlineDocumentText className="-ml-1 text-2xl" />}
+        {isDoc && <HiOutlineDocumentText className="-ml-1 flex-none text-2xl" />}
         {children}
       </a>
     </Link>

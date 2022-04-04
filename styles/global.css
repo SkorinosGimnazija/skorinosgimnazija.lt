@@ -16,10 +16,15 @@
     @apply scale-110;
   }
 
-  article p,
-  article ul,
-  article ol {
-    @apply mb-2 last:mb-0;
+  article {
+    p {
+      @apply mb-2 text-justify last:mb-0;
+    }
+
+    ul,
+    ol {
+      @apply mb-2 last:mb-0;
+    }
   }
 
   footer::before {

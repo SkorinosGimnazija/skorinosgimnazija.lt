@@ -14,8 +14,9 @@ export const Markdown: React.FC<Props> = ({ children }) => {
   return (
     <MarkdownJsx
       options={{
+        forceBlock: true,
         overrides: {
-          a: { component: PostLink },
+          a: PostLink,
         },
       }}
     >
