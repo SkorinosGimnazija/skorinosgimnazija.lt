@@ -18,7 +18,7 @@ export const Seo: React.FC<Props> = ({ post, title }) => {
 
   title = title ?? post?.title;
 
-  const pageTitle = (title ? title + ' – ' : '') + t.nameShort;
+  const pageTitle = (title ? title + ' – ' : '') + t.schoolNameShort;
   const pageDescription = post?.meta ?? defaultDescripton;
   const pageImage = post?.featuredImage
     ? process.env.NEXT_PUBLIC_STATIC_URL + '/' + post.featuredImage

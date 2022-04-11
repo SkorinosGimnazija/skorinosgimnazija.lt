@@ -23,16 +23,16 @@ export const Footer: React.FC<Props> = () => {
           )}
         </div>
         <address className="text-center md:text-right">
-          <p>{t.name}</p>
-          <p>{t.address}</p>
-          <p>{t.phone}</p>
-          <a className="text-blue-500" href={`mailto:${t.email}`}>
-            {t.email}
+          <p>{t.schoolName}</p>
+          <p>{t.schoolAdress}</p>
+          <p>{t.schoolPhone}</p>
+          <a className="text-blue-500" href={`mailto:${t.schoolEmail}`}>
+            {t.schoolEmail}
           </a>
         </address>
       </div>
       <p className="tetx-sm mb-10 text-center text-gray-500">
-        &copy; {new Date().getFullYear()} {t.name}
+        &copy; {new Date().getFullYear()} {t.schoolName}
       </p>
     </footer>
   );

@@ -54,7 +54,9 @@
   #events {
     /* events scroll bar firefox */
     scrollbar-color: transparent transparent;
-    &:hover {
+
+    &:hover,
+    &:focus-visible {
       scrollbar-color: unset;
     }
 
@@ -62,10 +64,28 @@
     &::-webkit-scrollbar {
       @apply w-2 bg-transparent;
     }
-    &:hover::-webkit-scrollbar-thumb {
+
+    &:hover::-webkit-scrollbar-thumb,
+    &:focus-visible::-webkit-scrollbar-thumb {
       @apply rounded-md bg-gray-300;
       &:hover {
         @apply bg-gray-400;
+      }
+    }
+  }
+
+  .table {
+    th,
+    td {
+      @apply border border-black p-2;
+    }
+
+    tbody {
+      tr {
+        @apply transition-colors duration-300 ease-linear;
+        &:hover {
+          @apply bg-gray-200;
+        }
       }
     }
   }

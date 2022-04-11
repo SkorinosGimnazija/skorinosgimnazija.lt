@@ -46,7 +46,7 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, event
     <>
       <Header />
       <section className="container relative -mt-12 flex flex-col-reverse flex-wrap lg:flex-row xl:px-20">
-        <main className="lg:flex-1">{children}</main>
+        <main className="max-w-full lg:flex-1">{children}</main>
         <aside className="w-full p-4 lg:max-w-sm">
           <MenuList menus={menus} />
           <EventList events={events} />
