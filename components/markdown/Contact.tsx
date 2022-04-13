@@ -21,7 +21,7 @@ export const Contact: React.FC<Props> = ({ children, image, name, phone, email, 
           {phone}
         </p>
         {email && (
-          <p>
+          <p className="break-all">
             <HiOutlineMail className="mr-1 inline text-xl" />
             {email}
           </p>
