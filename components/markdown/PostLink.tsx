@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import React, { useEffect, useState, useRef } from 'react';
-import { HiOutlineDocumentText } from 'react-icons/hi';
+import React from 'react';
+import { HiOutlineDocumentText, HiOutlineExternalLink } from 'react-icons/hi';
 
 interface Props {
   href: string;
@@ -9,15 +9,17 @@ interface Props {
 export const PostLink: React.FC<Props> = ({ children, href }) => {
   const isLocal = href.startsWith(process.env.NEXT_PUBLIC_URL);
   const isDoc = href.endsWith('.pdf');
+  const isExternal = !isDoc && !isLocal;
 
   return (
     <Link href={href}>
       <a
-        className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:underline"
+        className="items-center text-blue-600 hover:text-blue-400 hover:underline"
         target={isLocal ? null : '_blank'}
         rel={isLocal ? null : 'noreferrer noopener'}
       >
-        {isDoc && <HiOutlineDocumentText className="-ml-1 flex-none text-2xl" />}
+        {isExternal && <HiOutlineExternalLink className="-ml-1 inline text-2xl" />}
+        {isDoc && <HiOutlineDocumentText className="-ml-1 inline text-2xl" />}
         {children}
       </a>
     </Link>
