@@ -17,13 +17,22 @@
   }
 
   article {
-    p {
-      @apply mb-2 text-justify last:mb-0;
+    p,
+    ol,
+    ul {
+      @apply mb-2 last:mb-0;
     }
 
-    ul,
+    p {
+      @apply text-justify;
+    }
+
+    ul {
+      @apply list-disc pl-8;
+    }
+
     ol {
-      @apply mb-2 last:mb-0;
+      @apply list-decimal pl-8;
     }
   }
 
