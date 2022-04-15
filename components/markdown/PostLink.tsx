@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const PostLink: React.FC<Props> = ({ children, href }) => {
-  const isLocal = href.startsWith(process.env.NEXT_PUBLIC_URL);
+  const isLocal = href.startsWith('/') || href.startsWith(process.env.NEXT_PUBLIC_URL);
   const isDoc = href.endsWith('.pdf');
   const isExternal = !isDoc && !isLocal;
 
