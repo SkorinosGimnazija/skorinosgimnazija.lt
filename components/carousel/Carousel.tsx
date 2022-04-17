@@ -47,7 +47,7 @@ export const Carousel: React.FC<Props> = ({ images }) => {
   };
 
   return (
-    <ul className="relative mt-8 grid list-none overflow-hidden">
+    <ul className="relative mt-8 grid list-none overflow-hidden p-0">
       {images.map((src, id) => {
         return (
           <li

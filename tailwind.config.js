@@ -17,6 +17,14 @@ module.exports = {
       center: true,
     },
   },
-  safelist: ['text-center', 'text-left', 'text-right'],
+  safelist: [
+    'text-center',
+    'text-left',
+    'text-right',
+    'flex',
+    'flex-wrap',
+    'gap-1',
+    'justify-center',
+  ],
   plugins: [],
 };
