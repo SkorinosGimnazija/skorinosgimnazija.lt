@@ -37,6 +37,7 @@ class Api {
   }
 
   public async getEvents(week: number) {
+    return [];
     const events = await this.fetch(`/events/public/${week}`);
     return events as IEvent[];
   }
