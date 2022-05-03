@@ -59,8 +59,8 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           </li>
         );
       })}
-      <CarouselButton onClick={handleClick(-1)} left />
-      <CarouselButton onClick={handleClick(1)} />
+      <CarouselButton onClick={handleClick(-1)} items={images} left />
+      <CarouselButton onClick={handleClick(1)} items={images} />
       <CarouselSwitcher
         items={images}
         currentIndex={currentImageIndex}

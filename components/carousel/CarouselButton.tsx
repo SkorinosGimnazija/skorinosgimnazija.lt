@@ -3,10 +3,15 @@ import { MdChevronRight } from 'react-icons/md';
 
 interface Props {
   onClick: VoidFunction;
+  items: any[];
   left?: boolean;
 }
 
-export const CarouselButton: React.FC<Props> = ({ onClick, left }) => {
+export const CarouselButton: React.FC<Props> = ({ onClick, left, items }) => {
+  if (items.length <= 1) {
+    return null;
+  }
+
   return (
     <button
       onClick={onClick}

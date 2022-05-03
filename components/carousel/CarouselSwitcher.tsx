@@ -8,6 +8,10 @@ interface Props {
 }
 
 export const CarouselSwitcher: React.FC<Props> = ({ items, currentIndex, onClick }) => {
+  if (items.length <= 1) {
+    return null;
+  }
+
   const handleClick = (id: number) => () => {
     onClick(id);
   };
