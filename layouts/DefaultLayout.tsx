@@ -1,17 +1,14 @@
-import { GetStaticProps } from 'next';
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { BannerList } from '../components/banner/BannerList';
+import { EventList } from '../components/events/EventList';
 import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { MenuList } from '../components/menu/MenuList';
 import { IBanner, IEvent, IMenu } from '../models/models';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import gsap from 'gsap';
-import { EventList } from '../components/events/EventList';
 
 interface Props {
   menus: IMenu[];
-  banners: IBanner[];
+  banners?: IBanner[];
   events?: IEvent[];
 }
 

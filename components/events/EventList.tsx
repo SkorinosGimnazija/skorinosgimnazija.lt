@@ -1,23 +1,23 @@
-import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
+import React from 'react';
+import { FcGoogle } from 'react-icons/fc';
 import { useTranslation } from '../../hooks/useTranslation';
 import { IEvent } from '../../models/models';
 import { EventItem } from './EventItem';
-import { FcGoogle } from 'react-icons/fc';
-import Link from 'next/link';
 
 interface Props {
   events?: IEvent[];
 }
 
 export const EventList: React.FC<Props> = ({ events }) => {
-  const { locale, t } = useTranslation();
+  const { locale } = useTranslation();
 
   if (!events?.length || locale !== 'lt') {
     return null;
   }
 
   return (
-    <div className="my-8 hidden rounded-lg bg-white bg-opacity-80 py-4 shadow-md backdrop-blur-lg lg:block">
+    <div className="my-8 hidden rounded-lg bg-white bg-opacity-70 py-4 shadow-md backdrop-blur-lg lg:block">
       <div id="events" className="max-h-96 overflow-y-auto" tabIndex={0}>
         {events.map((x) => {
           return <EventItem key={x.id} event={x} />;

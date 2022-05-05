@@ -1,8 +1,9 @@
-import React from 'react';
 import MarkdownJsx from 'markdown-to-jsx';
+import React from 'react';
 import { PostLink } from './PostLink';
-import { Contact } from './Contact';
-import { Table } from './Table';
+import { PostTable } from './PostTable';
+import { Contact } from './widgets/Contact';
+import { Map } from './widgets/Map';
 
 interface Props {
   children?: string | null;
@@ -19,8 +20,10 @@ export const Markdown: React.FC<Props> = ({ children }) => {
         forceBlock: true,
         overrides: {
           a: PostLink,
+          table: PostTable,
+
           Contact: Contact,
-          table: Table,
+          Map: Map,
         },
       }}
     >

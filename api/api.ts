@@ -10,8 +10,8 @@ class Api {
     return response;
   }
 
-  public async getPosts(locale: string) {
-    const posts = await this.fetch(`/posts/public/${locale}/all`);
+  public async getPosts(locale: string, items: number, page: number) {
+    const posts = await this.fetch(`/posts/public/${locale}/all?items=${items}&page=${page}`);
     return posts as IPost[];
   }
 

@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { IEvent } from '../../models/models';
-import { toEventLocalDateTime, toEventLocalDate } from '../../utils/dateFormat';
 import { EventDate } from './EventDate';
 import { EventDateRange } from './EventDateRange';
 

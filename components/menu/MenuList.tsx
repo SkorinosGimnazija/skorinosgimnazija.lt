@@ -8,7 +8,7 @@ interface Props {
 
 export const MenuList: React.FC<Props> = ({ menus }) => {
   return (
-    <nav className="overflow-hidden rounded-lg bg-white bg-opacity-80 py-4 shadow-md backdrop-blur-lg">
+    <nav className="overflow-hidden rounded-lg bg-white bg-opacity-70 py-4 shadow-md backdrop-blur-lg">
       <ul>
         {menus
           ?.filter((x) => x.position === 'side')

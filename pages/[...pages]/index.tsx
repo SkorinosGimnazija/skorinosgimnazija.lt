@@ -8,16 +8,16 @@ import { DefaultLayout } from '../../layouts/DefaultLayout';
 export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const paths = [];
 
-  // for await (const locale of locales ?? []) {
-  //   const rootMenus = await api.getMenus(locale);
-  //   const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus));
+  for await (const locale of locales ?? []) {
+    const rootMenus = await api.getMenus(locale);
+    const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus));
 
-  //   for (const menu of allMenus) {
-  //     if (!menu.childMenus?.length && !menu.url?.length) {
-  //       paths.push('/' + locale + menu.path);
-  //     }
-  //   }
-  // }
+    for (const menu of allMenus) {
+      if (!menu.childMenus?.length && !menu.url?.length) {
+        paths.push('/' + locale + menu.path);
+      }
+    }
+  }
 
   return {
     paths,
@@ -27,10 +27,9 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   try {
-    const [post, menus, banners] = await Promise.all([
+    const [post, menus] = await Promise.all([
       api.getPostByPath(locale, params.pages),
       api.getMenus(locale),
-      api.getBanners(locale),
     ]);
 
     if (!post) {
@@ -41,7 +40,6 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       props: {
         post,
         menus,
-        banners,
       },
       // revalidate: 60 * 60, // 1h
       revalidate: 5,
@@ -51,13 +49,9 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   }
 };
 
-const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  post,
-  menus,
-  banners,
-}) => {
+const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post, menus }) => {
   return (
-    <DefaultLayout menus={menus} banners={banners}>
+    <DefaultLayout menus={menus}>
       <Seo post={post} />
       <Post post={post} hideDate />
     </DefaultLayout>

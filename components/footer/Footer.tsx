@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
 
-interface Props {}
-
-export const Footer: React.FC<Props> = () => {
+export const Footer: React.FC = () => {
   const { t, locale } = useTranslation();
   return (
     <footer className="relative mt-20 flex flex-col">

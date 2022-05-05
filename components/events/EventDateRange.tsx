@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { toEventLocalDateTime, toEventLocalDate } from '../../utils/dateFormat';
+import React from 'react';
 import { EventDate } from './EventDate';
 
 interface Props {

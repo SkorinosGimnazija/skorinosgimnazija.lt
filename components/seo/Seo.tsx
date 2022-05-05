@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Logo from '../../assets/images/logo-big.png';
+import Logo from '../../assets/images/logo.png';
 import { useTranslation } from '../../hooks/useTranslation';
 import { IPost } from '../../models/models';
 

@@ -25,6 +25,9 @@ module.exports = {
     'flex-wrap',
     'gap-1',
     'justify-center',
+    'overflow-hidden',
+    'shadow-md',
+    'rounded-lg',
   ],
   plugins: [],
 };
