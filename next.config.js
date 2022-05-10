@@ -3,6 +3,7 @@ module.exports = {
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: { scrollRestoration: true },
   images: {
     domains: ['localhost', process.env.NEXT_PUBLIC_STATIC_URL],
     formats: ['image/avif', 'image/webp'],
@@ -28,10 +29,6 @@ module.exports = {
       {
         source: '/:path*',
         headers: [
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
           {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
