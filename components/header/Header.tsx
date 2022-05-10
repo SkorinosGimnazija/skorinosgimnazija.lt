@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
 
   return (
     <section
-      className="relative h-[350px] bg-cover bg-center bg-no-repeat"
+      className="relative h-[450px] bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${HeroImage.src})` }}
     >
       <div className="relative z-10 w-full bg-black bg-opacity-10 backdrop-blur-sm">
