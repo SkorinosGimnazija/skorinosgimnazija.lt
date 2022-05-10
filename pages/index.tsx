@@ -7,7 +7,7 @@ import { DefaultLayout } from '../layouts/DefaultLayout';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const [posts, menus, banners, events] = await Promise.all([
-    api.getPosts(locale, 15, 0),
+    api.getPosts(locale, 12, 0),
     api.getMenus(locale),
     api.getBanners(locale),
     api.getEvents(0),
