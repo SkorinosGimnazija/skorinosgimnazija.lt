@@ -1,6 +1,9 @@
 {
   "name": "skorinosgimnazija.lt",
   "private": true,
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "scripts": {
     "dev:client": "next dev -p 3001",
     "dev:static": "node ../mokytojams.skorinosgimnazija.lt/dev-static-server.js",
