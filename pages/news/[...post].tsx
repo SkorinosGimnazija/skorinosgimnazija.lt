@@ -13,27 +13,23 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  try {
-    const [post, menus] = await Promise.all([
-      api.getPostById(params.post?.[0] ?? ''),
-      api.getMenus(locale),
-    ]);
+  const [post, menus] = await Promise.all([
+    api.getPostById(params.post?.[0] ?? ''),
+    api.getMenus(locale),
+  ]);
 
-    if (!post) {
-      throw new Error('Not found');
-    }
-
-    return {
-      props: {
-        post,
-        menus,
-      },
-      // revalidate: 60 * 60, // 1h
-      revalidate: 5,
-    };
-  } catch (error) {
+  if (!post) {
     return { notFound: true };
   }
+
+  return {
+    props: {
+      post,
+      menus,
+    },
+    // revalidate: 60 * 60, // 1h
+    revalidate: 5,
+  };
 };
 
 const NewsPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ menus, post }) => {

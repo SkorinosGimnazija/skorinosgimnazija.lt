@@ -26,27 +26,23 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  try {
-    const [post, menus] = await Promise.all([
-      api.getPostByPath(locale, params.pages),
-      api.getMenus(locale),
-    ]);
+  const [post, menus] = await Promise.all([
+    api.getPostByPath(locale, params.pages),
+    api.getMenus(locale),
+  ]);
 
-    if (!post) {
-      throw new Error('Not found');
-    }
-
-    return {
-      props: {
-        post,
-        menus,
-      },
-      // revalidate: 60 * 60, // 1h
-      revalidate: 5,
-    };
-  } catch (error) {
+  if (!post) {
     return { notFound: true };
   }
+
+  return {
+    props: {
+      post,
+      menus,
+    },
+    // revalidate: 60 * 60, // 1h
+    revalidate: 5,
+  };
 };
 
 const MenuPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ post, menus }) => {

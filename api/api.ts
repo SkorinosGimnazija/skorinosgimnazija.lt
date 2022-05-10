@@ -11,34 +11,64 @@ class Api {
   }
 
   public async getPosts(locale: string, items: number, page: number) {
-    const posts = await this.fetch(`/posts/public/${locale}/all?items=${items}&page=${page}`);
-    return posts as IPost[];
+    try {
+      const posts = await this.fetch(`/posts/public/${locale}/all?items=${items}&page=${page}`);
+      return posts as IPost[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   public async getPostById(id: string) {
-    const posts = await this.fetch(`/posts/public/${id}`);
-    return posts as IPost;
+    try {
+      const posts = await this.fetch(`/posts/public/${id}`);
+      return posts as IPost;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
   public async getPostByPath(locale: string, path: string[] | string) {
-    const encodedPath = encodeURIComponent(Array.isArray(path) ? path.join('/') : path);
-    const menus = await this.fetch(`/posts/public/${locale}/${encodedPath}`);
-    return menus as IPost[];
+    try {
+      const encodedPath = encodeURIComponent(Array.isArray(path) ? path.join('/') : path);
+      const post = await this.fetch(`/posts/public/${locale}/${encodedPath}`);
+      return post as IPost[];
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
   public async getMenus(locale: string) {
-    const menus = await this.fetch(`/menus/public/${locale}`);
-    return menus as IMenu[];
+    try {
+      const menus = await this.fetch(`/menus/public/${locale}`);
+      return menus as IMenu[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   public async getBanners(locale: string) {
-    const menus = await this.fetch(`/banners/public/${locale}`);
-    return menus as IBanner[];
+    try {
+      const banners = await this.fetch(`/banners/public/${locale}`);
+      return banners as IBanner[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 
   public async getEvents(week: number) {
-    const events = await this.fetch(`/events/public/${week}`);
-    return events as IEvent[];
+    try {
+      const events = await this.fetch(`/events/public/${week}`);
+      return events as IEvent[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
   }
 }
 
