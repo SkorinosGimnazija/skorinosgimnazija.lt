@@ -2,6 +2,7 @@
   "name": "skorinosgimnazija.lt",
   "private": true,
   "cacheDirectories": [
+    "node_modules",
     ".next/cache"
   ],
   "scripts": {
