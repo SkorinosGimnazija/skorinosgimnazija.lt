@@ -7,7 +7,7 @@ module.exports = {
     scrollRestoration: true,
   },
   images: {
-    domains: ['localhost', process.env.NEXT_PUBLIC_STATIC_URL],
+    domains: [process.env.NEXT_PUBLIC_STATIC_URL.replace(/^https?:\/\//, '').replace(/:\d+$/, '')],
   },
   i18n: {
     locales: ['lt', 'by', 'en'],
