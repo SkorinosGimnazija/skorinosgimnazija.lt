@@ -46,6 +46,11 @@
     header {
       @apply bg-black bg-opacity-50;
     }
+
+    article,
+    aside > * {
+      background: white !important;
+    }
   }
 }
 
