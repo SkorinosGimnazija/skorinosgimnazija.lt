@@ -1,5 +1,5 @@
 module.exports = {
-  // swcMinify: true,
+  swcMinify: true,
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
@@ -7,7 +7,7 @@ module.exports = {
     scrollRestoration: true,
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_STATIC_URL],
+    domains: ['localhost', process.env.NEXT_PUBLIC_STATIC_URL],
   },
   i18n: {
     locales: ['lt', 'by', 'en'],
