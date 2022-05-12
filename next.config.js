@@ -3,10 +3,11 @@ module.exports = {
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
-  experimental: { scrollRestoration: true },
+  experimental: {
+    scrollRestoration: true,
+  },
   images: {
-    domains: ['localhost', process.env.NEXT_PUBLIC_STATIC_URL],
-    formats: ['image/avif', 'image/webp'],
+    domains: [process.env.NEXT_PUBLIC_STATIC_URL],
   },
   i18n: {
     locales: ['lt', 'by', 'en'],
