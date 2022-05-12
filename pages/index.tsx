@@ -20,8 +20,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       banners,
       events,
     },
-    //revalidate: 60 * 60, // 1h
-    revalidate: 5,
+    revalidate: 60 * 60, // 1h
   };
 };
 
