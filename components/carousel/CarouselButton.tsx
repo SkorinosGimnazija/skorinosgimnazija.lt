@@ -15,6 +15,7 @@ export const CarouselButton: React.FC<Props> = ({ onClick, left, items }) => {
   return (
     <button
       onClick={onClick}
+      type="button"
       className={`text-shadow absolute bottom-1/2 z-10 translate-y-1/2 text-6xl text-white ${
         left ? 'rotate-180' : 'right-0'
       }`}
