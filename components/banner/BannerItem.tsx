@@ -11,7 +11,7 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
   const isLocal = banner.url.startsWith('/');
 
   return (
-    <div className="my-4 hidden overflow-hidden rounded-lg bg-white bg-opacity-70 px-2 py-4 shadow-md backdrop-blur-lg lg:block">
+    <div className="my-4 hidden overflow-hidden rounded-lg bg-white bg-opacity-70 px-2 py-4 shadow-md backdrop-blur-lg lg:flex lg:justify-center">
       <Link href={banner.url}>
         <a
           target={isLocal ? null : '_blank'}
@@ -19,7 +19,7 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
           title={banner.title}
         >
           <Image
-            className="mx-auto transition-transform duration-300 hover:scale-105"
+            className="transition-transform duration-300 hover:scale-105"
             src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${banner.pictureUrl}`}
             width={banner.width}
             height={banner.height}
