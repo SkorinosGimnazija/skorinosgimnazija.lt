@@ -15,7 +15,7 @@ export const Post: React.FC<Props> = ({ post, hideDate }) => {
   }
 
   return (
-    <article className="m-4 flex overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg">
+    <article className="flex overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg">
       <div className="w-full p-8">
         <h1 className="text-2xl">{post.title}</h1>
         <PostDate published={post.publishedAt} modified={post.modifiedAt} hide={hideDate} />

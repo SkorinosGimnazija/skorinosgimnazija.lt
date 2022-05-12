@@ -19,7 +19,7 @@ export const PreviewPost: React.FC<Props> = ({ post }) => {
 
   return (
     <Link href={`/news/${post.id}/${post.slug}`}>
-      <a className="m-4 block" title={post.title}>
+      <a className="block" title={post.title}>
         <article className="flex overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg">
           <PostFeaturedImage src={post.featuredImage} alt={post.title} />
           <div className="flex-1 p-6">
