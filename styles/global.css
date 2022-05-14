@@ -48,7 +48,7 @@
     }
 
     article,
-    aside > * {
+    nav {
       background: white !important;
     }
   }

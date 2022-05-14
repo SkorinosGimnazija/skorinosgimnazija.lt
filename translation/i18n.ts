@@ -7,6 +7,7 @@ interface Translation {
     schoolEmail: string;
 
     modified: string;
+    sitemap: string;
   };
 }
 
@@ -19,6 +20,7 @@ export const translation: Translation = {
     schoolEmail: 'rastine@skorinos.vilnius.lm.lt',
 
     modified: 'Atnaujinta',
+    sitemap: 'Svetainės medis',
   },
   by: {
     schoolName: 'Віленская гімназія імя Францыска Скарыны',
@@ -28,6 +30,7 @@ export const translation: Translation = {
     schoolEmail: 'rastine@skorinos.vilnius.lm.lt',
 
     modified: 'Абноўлена',
+    sitemap: 'Карта сайта',
   },
   en: {
     schoolName: 'Vilnius Pranciskaus Skorinos Gymnasium',
@@ -37,5 +40,6 @@ export const translation: Translation = {
     schoolEmail: 'rastine@skorinos.vilnius.lm.lt',
 
     modified: 'Updated',
+    sitemap: 'Sitemap',
   },
 };

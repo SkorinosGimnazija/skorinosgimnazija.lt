@@ -31,12 +31,10 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   events,
 }) => {
   return (
-    <>
-      <DefaultLayout menus={menus} banners={banners} events={events}>
-        <Seo />
-        <PostsList posts={posts} />
-      </DefaultLayout>
-    </>
+    <DefaultLayout menus={menus} banners={banners} events={events}>
+      <Seo />
+      <PostsList posts={posts} />
+    </DefaultLayout>
   );
 };
 

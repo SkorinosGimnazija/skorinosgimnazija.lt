@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { FaSitemap } from 'react-icons/fa';
 import HeroImage from '../../assets/images/hero.jpg';
 import LogoImage from '../../assets/images/logo.png';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -21,7 +22,14 @@ export const Header: React.FC = () => {
             </Link>
           </h1>
           <div className="text-shadow flex flex-1 justify-end gap-3 text-lg">
-            <ul className="flex gap-3">
+            <ul className="flex items-center gap-3">
+              <li>
+                <Link href={'/sitemap'}>
+                  <a title={t.sitemap}>
+                    <FaSitemap />
+                  </a>
+                </Link>
+              </li>
               <li>
                 <Link href="/" locale="lt">
                   <a>LT</a>
@@ -46,13 +54,6 @@ export const Header: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-80">
             <Image priority src={LogoImage} width={150} height={150} alt={t.schoolName} />
           </div>
-          {/* <img
-            className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-80"
-            src={LogoImage.src}
-            alt={t.schoolName}
-            width="150"
-            height="150"
-          /> */}
         </a>
       </Link>
     </section>
