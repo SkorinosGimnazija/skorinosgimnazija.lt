@@ -55,7 +55,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
       <li className="text-lg transition-colors duration-200 hover:bg-gray-200">
         <Link href={isExpandable ? '#' : menu.url ?? menu.path}>
           <a
-            className="flex justify-between px-6 py-2"
+            className="flex items-center justify-between px-6 py-2"
             onClick={handleClick}
             target={menu.url ? '_blank' : '_self'}
             rel={menu.url ? 'noreferrer noopener' : null}
