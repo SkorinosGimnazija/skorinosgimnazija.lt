@@ -16,10 +16,10 @@ export const Sitemap: React.FC<Props> = ({ menus }) => {
       <ul className="mt-4 list-none">
         {menus.map((rootMenu) => {
           return (
-            <React.Fragment key={rootMenu.id}>
+            <li key={rootMenu.id}>
               {rootMenu.childMenus?.length > 0 ? (
                 <>
-                  <li>{rootMenu.title}</li>
+                  {rootMenu.title}
                   <ul className="list-none">
                     {rootMenu.childMenus.map((childMenu) => {
                       return (
@@ -33,11 +33,9 @@ export const Sitemap: React.FC<Props> = ({ menus }) => {
                   </ul>
                 </>
               ) : (
-                <li>
-                  <PostLink href={rootMenu.url ?? rootMenu.path}>{rootMenu.title}</PostLink>
-                </li>
+                <PostLink href={rootMenu.url ?? rootMenu.path}>{rootMenu.title}</PostLink>
               )}
-            </React.Fragment>
+            </li>
           );
         })}
       </ul>

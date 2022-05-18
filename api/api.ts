@@ -1,4 +1,4 @@
-import { IBanner, IEvent, IMenu, IPost } from '../models/models';
+import { IBanner, IEvent, IMenu, IMeta, IPost } from '../models/models';
 
 class Api {
   private async fetch(url: string) {
@@ -65,6 +65,26 @@ class Api {
     try {
       const events = await this.fetch(`/events/public/${week}`);
       return events as IEvent[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  public async getMenusMeta() {
+    try {
+      const menus = await this.fetch('/meta/menus');
+      return menus as IMeta[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  public async getPostsMeta() {
+    try {
+      const posts = await this.fetch('/meta/posts');
+      return posts as IMeta[];
     } catch (error) {
       console.error(error);
       return [];

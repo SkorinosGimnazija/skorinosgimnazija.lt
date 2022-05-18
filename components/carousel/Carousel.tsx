@@ -54,6 +54,7 @@ export const Carousel: React.FC<Props> = ({ images }) => {
             key={id}
             ref={(ref) => (imageRefs.current[id] = ref)}
             className={`col-start-1 row-start-1 ${id === 0 ? 'opacity-100' : 'opacity-0'}`}
+            style={{ zIndex: id === 0 ? '2' : '1' }}
           >
             <img src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${src}`} alt="" />
           </li>

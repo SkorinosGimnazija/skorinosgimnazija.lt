@@ -54,3 +54,8 @@ export interface IEvent {
   endDate?: string | null;
   endDateTime?: string | null;
 }
+
+export interface IMeta {
+  url: string;
+  language: string;
+}
