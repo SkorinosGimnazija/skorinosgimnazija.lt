@@ -1,6 +1,6 @@
 {
-  "name": "Vilniaus Pranciškaus Skorinos gimnazija",
-  "short_name": "P. Skorinos gimnazija",
+  "name": "Pranciškaus Skorinos gimnazija",
+  "short_name": "P. Skorinos",
   "icons": [
     { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
