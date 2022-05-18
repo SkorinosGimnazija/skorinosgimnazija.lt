@@ -28,8 +28,8 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
           return `<url>
             <loc>${
               process.env.NEXT_PUBLIC_URL +
-              '/news' +
               (x.language === config.i18n.defaultLocale ? '' : '/' + x.language) +
+              '/news' +
               x.url
             }</loc>
             <priority>0.5</priority>
