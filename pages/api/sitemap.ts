@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { api } from '../../api/api';
-import { IMeta } from '../../models/models';
 import config from '../../next.config';
 
 const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
@@ -14,7 +13,11 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
       ${menus
         .map((x) => {
           return `<url>
-            <loc>${generateUrl(x)}</loc>
+            <loc>${
+              process.env.NEXT_PUBLIC_URL +
+              (x.language === config.i18n.defaultLocale ? '' : '/' + x.language) +
+              x.url
+            }</loc>
             <priority>1.0</priority>
             <changefreq>weekly</changefreq>
           </url>`;
@@ -23,7 +26,12 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
       ${posts
         .map((x) => {
           return `<url>
-            <loc>${generateUrl(x)}</loc>
+            <loc>${
+              process.env.NEXT_PUBLIC_URL +
+              '/news' +
+              (x.language === config.i18n.defaultLocale ? '' : '/' + x.language) +
+              x.url
+            }</loc>
             <priority>0.5</priority>
             <changefreq>monthly</changefreq>
           </url>`;
@@ -33,14 +41,6 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
   );
 
   res.end();
-};
-
-const generateUrl = (meta: IMeta) => {
-  return (
-    process.env.NEXT_PUBLIC_URL +
-    (meta.language === config.i18n.defaultLocale ? '' : '/' + meta.language) +
-    meta.url
-  );
 };
 
 export default sitemap;
