@@ -57,5 +57,6 @@ export interface IEvent {
 
 export interface IMeta {
   url: string;
-  language: string;
+  ln: string;
+  date: string;
 }

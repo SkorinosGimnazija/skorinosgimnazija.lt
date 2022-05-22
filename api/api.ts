@@ -90,6 +90,16 @@ class Api {
       return [];
     }
   }
+
+  public async getLocalesMeta() {
+    try {
+      const locales = await this.fetch('/meta/locales');
+      return locales as IMeta[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
 }
 
 export const api = new Api();
