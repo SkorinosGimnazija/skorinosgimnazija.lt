@@ -24,6 +24,7 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
             width={banner.width}
             height={banner.height}
             alt={banner.title}
+            loading="eager"
           />
         </a>
       </Link>
