@@ -17,6 +17,7 @@ export const PostLink: React.FC<Props> = ({ children, href }) => {
         className="text-blue-600 hover:text-blue-400 hover:underline"
         target={isLocal ? null : '_blank'}
         rel={isLocal ? null : 'noreferrer noopener'}
+        onClick={(e) => e.stopPropagation()}
       >
         {isExternal && <HiOutlineExternalLink className="-ml-1 inline text-2xl" />}
         {isDoc && <HiOutlineDocumentText className="-ml-1 inline text-2xl" />}
