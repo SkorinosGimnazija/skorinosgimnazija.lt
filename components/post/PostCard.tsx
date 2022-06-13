@@ -34,7 +34,7 @@ export const PostCard: React.FC<Props> = ({ post }) => {
       )}
       <div className={`p-6 ${post.featuredImage ? 'col-span-3' : 'col-span-full'}`}>
         <Link href={`/news/${post.id}/${post.slug}`}>
-          <a title={post.title}>
+          <a title={post.title} onClick={(e) => e.stopPropagation()}>
             <h2 className="text-2xl">{post.title}</h2>
             <PostDate published={post.publishedAt} modified={post.modifiedAt} />
           </a>
