@@ -1,29 +1,16 @@
-export interface ILanguage {
-  id: number;
-  name: string;
-  slug: string;
-}
-
 export interface IBanner {
   id: number;
   title: string;
   url: string;
   width: number;
   height: number;
-  isPublished: boolean;
   pictureUrl: string;
-  order: number;
-  language: ILanguage;
 }
 
 export interface IPost {
   id: number;
-  isFeatured: boolean;
-  isPublished: boolean;
-  showInFeed: boolean;
   publishedAt: string;
   modifiedAt?: string | null;
-  language: ILanguage;
   slug: string;
   title: string;
   introText?: string | null;
@@ -35,14 +22,11 @@ export interface IPost {
 
 export interface IMenu {
   id: number;
-  order: number;
   url?: string | null;
   title: string;
   slug: string;
-  position: string;
+  position: 'side' | 'footer';
   path: string;
-  isPublished: boolean;
-  parentMenuId?: number | null;
   childMenus: IMenu[];
 }
 
