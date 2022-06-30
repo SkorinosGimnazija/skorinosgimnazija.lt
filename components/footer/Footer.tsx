@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaFacebook } from 'react-icons/fa';
 import { useTranslation } from '../../hooks/useTranslation';
 
 export const Footer: React.FC = () => {
@@ -20,14 +21,28 @@ export const Footer: React.FC = () => {
             </>
           )}
         </div>
-        <address className="text-center md:text-right">
-          <p>{t.schoolName}</p>
-          <p>{t.schoolAdress}</p>
-          <p>{t.schoolPhone}</p>
-          <a className="text-blue-500" href={`mailto:${t.schoolEmail}`}>
-            {t.schoolEmail}
-          </a>
-        </address>
+        <div>
+          <ul className="mb-2 flex items-center justify-center gap-2 md:justify-end">
+            <li>
+              <a
+                href="https://www.facebook.com/Vilniaus-Pranci%C5%A1kaus-Skorinos-gimnazija-108554757217249/"
+                title="Facebook"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaFacebook className="h-7 w-7 rounded-full hover:bg-white" />
+              </a>
+            </li>
+          </ul>
+          <address className="text-center md:text-right">
+            <p>{t.schoolName}</p>
+            <p>{t.schoolAdress}</p>
+            <p>{t.schoolPhone}</p>
+            <a className="text-blue-500" href={`mailto:${t.schoolEmail}`}>
+              {t.schoolEmail}
+            </a>
+          </address>
+        </div>
       </div>
       <p className="tetx-sm mb-10 text-center text-gray-500">
         &copy; {new Date().getFullYear()} {t.schoolName}
