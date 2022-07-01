@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaFacebook className="h-7 w-7 rounded-full hover:bg-white" />
+                <FaFacebook className="h-7 w-7 rounded-full hover:text-blue-600" />
               </a>
             </li>
           </ul>
