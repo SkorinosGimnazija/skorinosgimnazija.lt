@@ -7,6 +7,7 @@ interface Props {
   phone: string;
   email?: string;
   title?: string;
+  children: React.ReactNode;
 }
 
 export const Contact: React.FC<Props> = ({ children, image, name, phone, email, title }) => {

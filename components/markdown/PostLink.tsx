@@ -4,6 +4,7 @@ import { HiOutlineDocumentText, HiOutlineExternalLink } from 'react-icons/hi';
 
 interface Props {
   href: string;
+  children: React.ReactNode;
 }
 
 export const PostLink: React.FC<Props> = ({ children, href }) => {

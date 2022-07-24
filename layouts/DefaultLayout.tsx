@@ -10,6 +10,7 @@ interface Props {
   menus: IMenu[];
   banners?: IBanner[];
   events?: IEvent[];
+  children: React.ReactNode;
 }
 
 export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, events }) => {
