@@ -7,6 +7,7 @@ export declare global {
       NEXT_PUBLIC_API_URL: string;
       NEXT_PUBLIC_URL: string;
       NODE_ENV: 'development' | 'production';
+      REVALIDATION_TOKEN: string;
     }
   }
 }
