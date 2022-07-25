@@ -22,7 +22,15 @@ export const Footer: React.FC = () => {
           )}
         </div>
         <div>
-          <ul className="mb-2 flex items-center justify-center gap-2 md:justify-end">
+          <address className="text-center md:text-right">
+            <p>{t.schoolName}</p>
+            <p>{t.schoolAdress}</p>
+            <p>{t.schoolPhone}</p>
+            <a className="text-blue-500" href={`mailto:${t.schoolEmail}`}>
+              {t.schoolEmail}
+            </a>
+          </address>
+          <ul className="flex items-center justify-center gap-2 md:justify-end">
             <li>
               <a
                 href="https://www.facebook.com/Vilniaus-Pranci%C5%A1kaus-Skorinos-gimnazija-108554757217249/"
@@ -34,14 +42,6 @@ export const Footer: React.FC = () => {
               </a>
             </li>
           </ul>
-          <address className="text-center md:text-right">
-            <p>{t.schoolName}</p>
-            <p>{t.schoolAdress}</p>
-            <p>{t.schoolPhone}</p>
-            <a className="text-blue-500" href={`mailto:${t.schoolEmail}`}>
-              {t.schoolEmail}
-            </a>
-          </address>
         </div>
       </div>
       <p className="tetx-sm mb-10 text-center text-gray-500">
