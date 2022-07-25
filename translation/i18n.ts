@@ -9,6 +9,7 @@ interface Translation {
     modified: string;
     sitemap: string;
     pageNotFound: string;
+    moreNews: string;
   };
 }
 
@@ -23,6 +24,7 @@ export const translation: Translation = {
     modified: 'Atnaujinta',
     sitemap: 'Svetainės medis',
     pageNotFound: 'Puslapis nerastas',
+    moreNews: 'Daugiau naujienų',
   },
   by: {
     schoolName: 'Віленская гімназія імя Францыска Скарыны',
@@ -34,6 +36,7 @@ export const translation: Translation = {
     modified: 'Абноўлена',
     sitemap: 'Карта сайта',
     pageNotFound: 'Старонка не знойдзена',
+    moreNews: 'Больш навін',
   },
   en: {
     schoolName: 'Vilnius Pranciskaus Skorinos Gymnasium',
@@ -45,5 +48,6 @@ export const translation: Translation = {
     modified: 'Updated',
     sitemap: 'Sitemap',
     pageNotFound: 'Page not found',
+    moreNews: 'More news',
   },
 };

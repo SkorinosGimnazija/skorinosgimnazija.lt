@@ -10,9 +10,13 @@ class Api {
     return response;
   }
 
-  public async getPosts(locale: string, items: number, page: number) {
+  public async getPosts(locale: string, page: number) {
+    const postsPerPage = 12;
+
     try {
-      const posts = await this.fetch(`/posts/public/${locale}/all?items=${items}&page=${page}`);
+      const posts = await this.fetch(
+        `/posts/public/${locale}/all?items=${postsPerPage}&page=${page}`
+      );
       return posts as IPost[];
     } catch (error) {
       console.error(error);
