@@ -18,6 +18,7 @@ export const PostCard: React.FC<Props> = ({ post }) => {
 
   return (
     <article
+      title={post.title}
       onClick={() => router.push(`/news/${post.id}/${post.slug}`)}
       className="grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg"
     >
@@ -34,11 +35,11 @@ export const PostCard: React.FC<Props> = ({ post }) => {
       )}
       <div className={`p-6 ${post.featuredImage ? 'col-span-3' : 'col-span-full'}`}>
         <Link href={`/news/${post.id}/${post.slug}`}>
-          <a title={post.title} onClick={(e) => e.stopPropagation()}>
+          <a onClick={(e) => e.stopPropagation()}>
             <h2 className="text-2xl">{post.title}</h2>
-            <PostDate published={post.publishedAt} modified={post.modifiedAt} />
           </a>
         </Link>
+        <PostDate published={post.publishedAt} modified={post.modifiedAt} />
         <div className="mt-4 text-lg">
           <Markdown>{post.introText}</Markdown>
         </div>

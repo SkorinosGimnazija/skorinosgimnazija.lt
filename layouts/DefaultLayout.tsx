@@ -43,7 +43,7 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, event
   return (
     <>
       <Header />
-      <section className="container relative -mt-12 grid grid-cols-7 gap-8 xl:px-28">
+      <section className="container relative -mt-8 grid grid-cols-7 gap-8 xl:px-28">
         <main className="col-span-full w-full lg:col-span-5">{children}</main>
         <aside className="col-span-full row-start-1 w-full lg:col-span-2 lg:row-start-auto">
           <MenuList menus={menus} />
