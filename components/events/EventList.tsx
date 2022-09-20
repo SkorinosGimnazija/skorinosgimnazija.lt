@@ -1,6 +1,9 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { ImSpinner2 } from 'react-icons/im';
+import { useInView } from 'react-intersection-observer';
+import { api } from '../../api/api';
 import { useTranslation } from '../../hooks/useTranslation';
 import { IEvent } from '../../models/models';
 import { EventItem } from './EventItem';
@@ -11,6 +14,29 @@ interface Props {
 
 export const EventList: React.FC<Props> = ({ events }) => {
   const { locale } = useTranslation();
+  const [allEvents, setAllEvents] = useState(events);
+  const [eventsLoading, setEventsLoading] = useState(false);
+  const [hasMoreEvents, setHasMoreEvents] = useState(true);
+  const weekNumber = useRef(1);
+
+  const { ref } = useInView({
+    onChange: async (inView) => {
+      if (inView && hasMoreEvents && !eventsLoading) {
+        setEventsLoading(true);
+
+        const nextEvents = await api.getEvents(weekNumber.current++);
+        const currentEvents = allEvents.map((x) => x.id);
+        const newEvents = nextEvents.filter((x) => !currentEvents.includes(x.id));
+
+        if (newEvents.length === 0) {
+          setHasMoreEvents(false);
+        }
+
+        setAllEvents((x) => [...x, ...newEvents]);
+        setEventsLoading(false);
+      }
+    },
+  });
 
   if (!events?.length || locale !== 'lt') {
     return null;
@@ -19,9 +45,14 @@ export const EventList: React.FC<Props> = ({ events }) => {
   return (
     <div className="my-8 hidden rounded-lg bg-white bg-opacity-70 py-4 shadow-md backdrop-blur-lg lg:block">
       <div id="events" className="max-h-96 overflow-y-auto" tabIndex={0}>
-        {events.map((x) => {
+        {allEvents.map((x) => {
           return <EventItem key={x.id} event={x} />;
         })}
+        {hasMoreEvents && (
+          <div className="flex justify-center" ref={ref}>
+            <ImSpinner2 className="h-5 w-5 animate-spin" />
+          </div>
+        )}
       </div>
       <div className="flex justify-end">
         <Link href="https://calendar.google.com/calendar/r?cid=c_2kn8sdmcsm9mm1bqbk3s1lfncg@group.calendar.google.com">
