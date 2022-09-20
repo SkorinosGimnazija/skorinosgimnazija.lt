@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
 
   return (
     <section
-      className="relative h-[450px] bg-cover bg-center bg-no-repeat"
+      className="relative h-[450px] bg-cover bg-bottom bg-no-repeat"
       style={{ backgroundImage: `url(${HeroImage.src})` }}
     >
       <div className="relative z-10 w-full bg-black bg-opacity-10 backdrop-blur-sm">
@@ -49,13 +49,13 @@ export const Header: React.FC = () => {
           </div>
         </header>
       </div>
-      <Link href="/">
-        <a title={t.schoolName} tabIndex={-1}>
-          <div className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-80">
+      <div className="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 lg:left-80">
+        <Link href="/">
+          <a className="block" title={t.schoolName} tabIndex={-1}>
             <Image priority src={LogoImage} width={150} height={150} alt={t.schoolName} />
-          </div>
-        </a>
-      </Link>
+          </a>
+        </Link>
+      </div>
     </section>
   );
 };
