@@ -4,6 +4,7 @@ import { PostLink } from './PostLink';
 import { PostTable } from './PostTable';
 import { Contact } from './widgets/Contact';
 import { Map } from './widgets/Map';
+import { Youtube } from './widgets/Youtube';
 
 interface Props {
   children?: string | null;
@@ -24,6 +25,7 @@ export const Markdown: React.FC<Props> = ({ children }) => {
 
           Contact: Contact,
           Map: Map,
+          Youtube: Youtube,
         },
       }}
     >
