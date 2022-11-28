@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -23,13 +24,15 @@ export const PostCard: React.FC<Props> = ({ post }) => {
       className="grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg"
     >
       {post.featuredImage && (
-        <div className="hidden overflow-hidden lg:block">
-          <img
-            className="h-full w-full object-cover transition-transform duration-500 ease-out"
+        <div className="relative hidden overflow-hidden lg:block">
+          <Image
+            className="object-cover transition-transform duration-500 ease-out"
             width={300}
             height={300}
             src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${post.featuredImage}`}
             alt={post.title}
+            layout="fill"
+            // loading="eager"
           />
         </div>
       )}
