@@ -15,7 +15,7 @@ class Api {
   private async fetch(url: string, data?: RequestInit) {
     const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, data);
     if (!request.ok) {
-      return null;
+      throw 'Server error';
     }
     const response = await request.json();
     return response;
