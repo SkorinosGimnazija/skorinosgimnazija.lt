@@ -37,5 +37,5 @@ module.exports = {
     'shadow-md',
     'rounded-lg',
   ],
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

@@ -1,11 +1,33 @@
-import { IBanner, IEvent, IMenu, IMeta, IPost } from '../models/models';
+import {
+  IApiErrorResponse,
+  IAppointmentDate,
+  IAppointmentHost,
+  IAppointmentRegistration,
+  IAppointmentRegistrationResponse,
+  IBanner,
+  IEvent,
+  IMenu,
+  IMeta,
+  IPost,
+} from '../models/models';
 
 class Api {
-  private async fetch(url: string) {
-    const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`);
+  private async fetch(url: string, data?: RequestInit) {
+    const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, data);
     if (!request.ok) {
       return null;
     }
+    const response = await request.json();
+    return response;
+  }
+
+  private async fetchPost(url: string, body: {}) {
+    const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
     const response = await request.json();
     return response;
   }
@@ -102,6 +124,36 @@ class Api {
     } catch (error) {
       console.error(error);
       return [];
+    }
+  }
+
+  public async getAppointmentTeachers(slug: string) {
+    try {
+      const hosts = await this.fetch(`/appointments/public/hosts/available/${slug}`);
+      return hosts as IAppointmentHost[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  public async getAppointmentDates(slug: string, teacher: string) {
+    try {
+      const hosts = await this.fetch(`/appointments/public/dates/available/${slug}/${teacher}`);
+      return hosts as IAppointmentDate[];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  public async registerAppointment(body: IAppointmentRegistration) {
+    try {
+      const appointment = await this.fetchPost('/appointments/public/create', body);
+      return appointment as IAppointmentRegistrationResponse & IApiErrorResponse;
+    } catch (error) {
+      console.error(error);
+      return null;
     }
   }
 }

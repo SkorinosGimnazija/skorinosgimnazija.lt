@@ -2,6 +2,7 @@
 // import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Toaster } from 'react-hot-toast';
 import '../styles/global.css';
 
 // gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
 
       <Component {...pageProps} />
+      <Toaster position="bottom-center" />
     </>
   );
 }

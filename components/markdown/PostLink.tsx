@@ -20,8 +20,8 @@ export const PostLink: React.FC<Props> = ({ children, href }) => {
         rel={isLocal ? null : 'noreferrer noopener'}
         onClick={(e) => e.stopPropagation()}
       >
-        {isExternal && <HiOutlineExternalLink className="-ml-1 inline text-2xl" />}
-        {isDoc && <HiOutlineDocumentText className="-ml-1 inline text-2xl" />}
+        {isExternal && <HiOutlineExternalLink className="inline text-2xl" />}
+        {isDoc && <HiOutlineDocumentText className="inline text-2xl" />}
         {children}
       </a>
     </Link>

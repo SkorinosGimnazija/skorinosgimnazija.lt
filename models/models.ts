@@ -44,3 +44,38 @@ export interface IMeta {
   ln: string;
   date: string;
 }
+
+export interface IAppointmentHost {
+  userName: string;
+  displayName: string;
+}
+
+export interface IAppointmentDate {
+  id: number;
+  date: string;
+}
+
+export interface IAppointmentRegistration {
+  captchaToken: string;
+  dateId: number;
+  userName: string;
+  attendeeName: string;
+  attendeeEmail: string;
+}
+
+export interface IAppointmentRegistrationResponse {
+  id: number;
+  attendeeName: string;
+  attendeeEmail: string;
+  dateId: number;
+  eventId: string;
+  userName: string;
+}
+
+export interface IApiErrorResponse {
+  title: string;
+  status: number;
+  errors: {
+    [key: string]: string[];
+  };
+}
