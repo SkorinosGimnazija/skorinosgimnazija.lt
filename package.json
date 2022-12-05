@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "gsap": "^3.11.3",
-    "markdown-to-jsx": "^7.1.7",
+    "markdown-to-jsx": "^7.1.8",
     "next": "^12.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.2.0",
