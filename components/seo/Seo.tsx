@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import React from 'react';
-import Logo from '../../assets/images/logo.png';
 import { useTranslation } from '../../hooks/useTranslation';
 import { IPost } from '../../models/models';
 
@@ -11,7 +10,7 @@ interface Props {
 
 const defaultDescripton =
   'Vilniaus Pranciškaus Skorinos gimnazija, Sietyno g. 21. Tel./faksas: +370 (5) 2459127, El. paštas: rastine@skorinos.vilnius.lm.lt';
-const defaultImage = process.env.NEXT_PUBLIC_URL + Logo.src;
+const defaultImage = process.env.NEXT_PUBLIC_URL + '/logo.png';
 
 export const Seo: React.FC<Props> = ({ post, title }) => {
   const { t, locale } = useTranslation();

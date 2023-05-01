@@ -26,13 +26,12 @@ export const PostCard: React.FC<Props> = ({ post }) => {
       {post.featuredImage && (
         <div className="relative hidden overflow-hidden lg:block">
           <Image
-            className="object-cover transition-transform duration-500 ease-out"
-            width={300}
-            height={300}
+            className="transition-transform duration-500 ease-out"
             src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${post.featuredImage}`}
             alt={post.title}
             layout="fill"
-            // loading="eager"
+            objectFit="cover"
+            quality={90}
           />
         </div>
       )}

@@ -168,6 +168,7 @@ export const ParentsRegistration: React.FC = () => {
                 name="name"
                 id="reg-name"
                 autoComplete="name"
+                maxLength={256}
                 required
                 className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm sm:text-sm"
               />
@@ -183,6 +184,7 @@ export const ParentsRegistration: React.FC = () => {
                 name="email"
                 id="reg-email"
                 autoComplete="email"
+                maxLength={256}
                 required
                 pattern=".+@gmail.com"
                 className="mt-1 block w-full rounded-md border border-gray-300 shadow-sm sm:text-sm"

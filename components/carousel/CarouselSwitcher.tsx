@@ -24,7 +24,7 @@ export const CarouselSwitcher: React.FC<Props> = ({ items, currentIndex, onClick
     <div className="text-shadow absolute inset-x-0 bottom-0 z-10 mb-2 hidden flex-wrap justify-center gap-1 text-3xl text-white lg:flex">
       {items.map((_, id) => {
         return (
-          <button key={id} type="button" onClick={handleClick(id)}>
+          <button key={id} aria-label={`${id + 1}`} type="button" onClick={handleClick(id)}>
             {id === currentIndex ? (
               <MdOutlineRadioButtonChecked />
             ) : (
