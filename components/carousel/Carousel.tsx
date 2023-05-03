@@ -1,4 +1,5 @@
 import gsap, { Expo } from 'gsap';
+import Image from 'next/image';
 import React, { useRef, useState } from 'react';
 import { CarouselButton } from './CarouselButton';
 import { CarouselSwitcher } from './CarouselSwitcher';
@@ -47,19 +48,29 @@ export const Carousel: React.FC<Props> = ({ images }) => {
   };
 
   return (
-    <ul className="relative mt-8 grid list-none overflow-hidden p-0">
-      {images.map((src, id) => {
-        return (
-          <li
-            key={id}
-            ref={(ref) => (imageRefs.current[id] = ref)}
-            className={`col-start-1 row-start-1 ${id === 0 ? 'opacity-100' : 'opacity-0'}`}
-            style={{ zIndex: id === 0 ? '2' : '1' }}
-          >
-            <img src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${src}`} alt="" />
-          </li>
-        );
-      })}
+    <section className="relative mt-8 w-full">
+      <ul className="relative grid list-none overflow-hidden p-0">
+        {images.map((src, id) => {
+          return (
+            <li
+              key={id}
+              ref={(ref) => (imageRefs.current[id] = ref)}
+              className={`relative col-start-1 row-start-1 ${
+                id === 0 ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{ zIndex: id === 0 ? '2' : '1' }}
+            >
+              <Image
+                src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${src}`}
+                width={1600}
+                height={900}
+                quality={80}
+                alt=""
+              />
+            </li>
+          );
+        })}
+      </ul>
       <CarouselButton onClick={handleClick(-1)} items={images} left />
       <CarouselButton onClick={handleClick(1)} items={images} />
       <CarouselSwitcher
@@ -67,6 +78,6 @@ export const Carousel: React.FC<Props> = ({ images }) => {
         currentIndex={currentImageIndex}
         onClick={handleSliderClick}
       />
-    </ul>
+    </section>
   );
 };

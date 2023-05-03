@@ -21,25 +21,22 @@ export const PostCard: React.FC<Props> = ({ post }) => {
     <article
       title={post.title}
       onClick={() => router.push(`/news/${post.id}/${post.slug}`)}
-      className="grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg"
+      className="group grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg"
     >
       {post.featuredImage && (
         <div className="relative hidden overflow-hidden lg:block">
           <Image
-            className="transition-transform duration-500 ease-out"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
             src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${post.featuredImage}`}
             alt={post.title}
-            layout="fill"
-            objectFit="cover"
+            fill
             quality={90}
           />
         </div>
       )}
       <div className={`col-span-full p-6 ${post.featuredImage ? 'lg:col-span-3' : ''}`}>
-        <Link href={`/news/${post.id}/${post.slug}`}>
-          <a onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl">{post.title}</h2>
-          </a>
+        <Link href={`/news/${post.id}/${post.slug}`} onClick={(e) => e.stopPropagation()}>
+          <h2 className="text-2xl">{post.title}</h2>
         </Link>
         <PostDate published={post.publishedAt} modified={post.modifiedAt} />
         <div className="mt-4 text-lg">

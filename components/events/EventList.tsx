@@ -55,14 +55,13 @@ export const EventList: React.FC<Props> = ({ events }) => {
         )}
       </div>
       <div className="flex justify-end">
-        <Link href="https://calendar.google.com/calendar/r?cid=c_2kn8sdmcsm9mm1bqbk3s1lfncg@group.calendar.google.com">
-          <a
-            className="mx-4 mt-2 block text-2xl"
-            target="_blank"
-            title="Pridėti prie „Google“ kalendoriaus"
-          >
-            <FcGoogle />
-          </a>
+        <Link
+          href="https://calendar.google.com/calendar/r?cid=c_2kn8sdmcsm9mm1bqbk3s1lfncg@group.calendar.google.com"
+          className="mx-4 mt-2 block text-2xl"
+          target="_blank"
+          title="Pridėti prie „Google“ kalendoriaus"
+        >
+          <FcGoogle />
         </Link>
       </div>
     </div>

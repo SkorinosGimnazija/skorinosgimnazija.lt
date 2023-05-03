@@ -53,20 +53,19 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
   return (
     <>
       <li className="text-lg transition-colors duration-200 hover:bg-gray-200">
-        <Link href={isExpandable ? '#' : menu.url ?? menu.path}>
-          <a
-            className="flex items-center justify-between px-6 py-2"
-            onClick={handleClick}
-            target={menu.url ? '_blank' : '_self'}
-            rel={menu.url ? 'noreferrer noopener' : null}
-          >
-            {menu.title}
-            {isExpandable && (
-              <span ref={chevronRef} className="rotate-90 text-2xl">
-                <MdChevronRight />
-              </span>
-            )}
-          </a>
+        <Link
+          href={isExpandable ? '#' : menu.url ?? menu.path}
+          className="flex items-center justify-between px-6 py-2"
+          onClick={handleClick}
+          target={menu.url ? '_blank' : '_self'}
+          rel={menu.url ? 'noreferrer noopener' : null}
+        >
+          {menu.title}
+          {isExpandable && (
+            <span ref={chevronRef} className="rotate-90 text-2xl">
+              <MdChevronRight />
+            </span>
+          )}
         </Link>
         {isExpandable && (
           <ul
@@ -77,15 +76,14 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
             {menu.childMenus.map((submenu) => {
               return (
                 <li key={submenu.id} className="hover:text-gray-500">
-                  <Link href={submenu.url ?? submenu.path}>
-                    <a
-                      onFocus={forceExpand}
-                      className="my-1 block"
-                      target={submenu.url ? '_blank' : '_self'}
-                      rel={submenu.url ? 'noreferrer noopener' : null}
-                    >
-                      {submenu.title}
-                    </a>
+                  <Link
+                    href={submenu.url ?? submenu.path}
+                    onFocus={forceExpand}
+                    className="my-1 block"
+                    target={submenu.url ? '_blank' : '_self'}
+                    rel={submenu.url ? 'noreferrer noopener' : null}
+                  >
+                    {submenu.title}
                   </Link>
                 </li>
               );
