@@ -18,8 +18,8 @@ export const ParentsRegistration: React.FC = () => {
   const [registeredDates, setRegisteredDates] = useState<number[]>([]);
   const availableDates = dates.filter((x) => !registeredDates.includes(x.id));
 
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!type) return;
@@ -48,8 +48,8 @@ export const ParentsRegistration: React.FC = () => {
               captchaToken: token,
               dateId: Number(date),
               userName: teacher,
-              attendeeEmail: emailRef.current.value,
-              attendeeName: nameRef.current.value,
+              attendeeEmail: emailRef.current!.value,
+              attendeeName: nameRef.current!.value,
             })
             .then((response) => {
               if (!response) {
