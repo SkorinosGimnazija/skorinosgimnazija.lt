@@ -1,10 +1,12 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   swcMinify: true,
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
     scrollRestoration: true,
+    // appDir: true,
   },
   images: {
     domains: [process.env.NEXT_PUBLIC_STATIC_URL.replace(/^https?:\/\//, '').replace(/:\d+$/, '')],
@@ -51,3 +53,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
