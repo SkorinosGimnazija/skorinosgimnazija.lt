@@ -6,6 +6,7 @@ import { Contact } from './widgets/Contact';
 import { Map } from './widgets/Map';
 import { ParentsRegistration } from './widgets/ParentsRegistration';
 import { Youtube } from './widgets/Youtube';
+import { InvitedStudentsList } from './InvitedStudentsList';
 
 interface Props {
   children?: string | null;
@@ -28,6 +29,7 @@ export const Markdown: React.FC<Props> = ({ children }) => {
           Map: Map,
           Youtube: Youtube,
           ParentsRegistration: ParentsRegistration,
+          InvitedStudentsList: InvitedStudentsList,
         },
       }}
     >
