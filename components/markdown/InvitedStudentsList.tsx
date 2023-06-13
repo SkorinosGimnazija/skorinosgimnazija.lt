@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 
 interface Props {
   children: [string];
 }
 
 export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
+  const inputRef = useRef<HTMLInputElement>();
   const data = useMemo(() => {
     return children[0]
       .split(/\r?\n/)
@@ -22,8 +23,14 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
       <div className="my-4 flex flex-col items-center gap-3 sm:flex-row">
         <label htmlFor="student-search">Paieška:</label>
         <div className="flex items-center rounded-md border border-gray-300 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-600">
-          <span className="py-2 pl-3 text-base">MOK-</span>
+          <span
+            className="cursor-text select-none py-2 pl-3 text-base"
+            onClick={() => inputRef.current?.focus()}
+          >
+            MOK-
+          </span>
           <input
+            ref={inputRef}
             value={searchInput}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
@@ -31,7 +38,6 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
               }
             }}
             type="search"
-            name="q"
             id="student-search"
             autoComplete="off"
             maxLength={8}
@@ -41,28 +47,28 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table text-center">
           <thead>
             <tr>
               <th className="w-1/12">Eil. Nr.</th>
               <th className="w-1/6">Prašymo registracijos numeris</th>
               <th className="w-1/6">Klasė</th>
               <th className="w-1/6">Pirmumo taškų suma</th>
-              <th className="">Mokinių priėmimo komisijos sprendimas</th>
+              <th>Mokinių priėmimo komisijos sprendimas</th>
             </tr>
           </thead>
           <tbody>
             {filteredData.map((x) => {
               return (
                 <tr key={x.id}>
-                  <td className="text-center">{x.nr}</td>
-                  <td className="text-center">
+                  <td>{x.nr}</td>
+                  <td>
                     {x.idPreffix}
                     {x.id}
                   </td>
-                  <td className="text-center">{x.classroom}</td>
-                  <td className="text-center">{x.score}</td>
-                  <td className="text-center">{x.result}</td>
+                  <td>{x.classroom}</td>
+                  <td>{x.score}</td>
+                  <td>{x.result}</td>
                 </tr>
               );
             })}
