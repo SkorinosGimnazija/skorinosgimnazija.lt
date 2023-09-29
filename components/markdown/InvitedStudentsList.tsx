@@ -62,10 +62,7 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
               return (
                 <tr key={x.id}>
                   <td>{x.nr}</td>
-                  <td>
-                    {x.idPreffix}
-                    {x.id}
-                  </td>
+                  <td>{`${x.idPreffix}${x.id}`}</td>
                   <td>{x.classroom}</td>
                   <td>{x.score}</td>
                   <td>{x.result}</td>
