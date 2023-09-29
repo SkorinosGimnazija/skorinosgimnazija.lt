@@ -34,18 +34,6 @@
     top: -350px;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 300' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M0 149L15.2 152.8C30.3 156.7 60.7 164.3 91 174.3C121.3 184.3 151.7 196.7 182 202.7C212.3 208.7 242.7 208.3 273 197.5C303.3 186.7 333.7 165.3 364 163.5C394.3 161.7 424.7 179.3 454.8 181.3C485 183.3 515 169.7 545.2 172.2C575.3 174.7 605.7 193.3 636 200.2C666.3 207 696.7 202 727 201.3C757.3 200.7 787.7 204.3 818 196.7C848.3 189 878.7 170 909 166.2C939.3 162.3 969.7 173.7 984.8 179.3L1000 185L1000 301L984.8 301C969.7 301 939.3 301 909 301C878.7 301 848.3 301 818 301C787.7 301 757.3 301 727 301C696.7 301 666.3 301 636 301C605.7 301 575.3 301 545.2 301C515 301 485 301 454.8 301C424.7 301 394.3 301 364 301C333.7 301 303.3 301 273 301C242.7 301 212.3 301 182 301C151.7 301 121.3 301 91 301C60.7 301 30.3 301 15.2 301L0 301Z' fill='%23e5e7eb' stroke-linecap='round' stroke-linejoin='miter'%3E%3C/path%3E%3C/svg%3E");
   }
-
-  @supports not (backdrop-filter: blur()) {
-    /* firefox */
-    header {
-      @apply bg-black bg-opacity-50;
-    }
-
-    article,
-    nav {
-      background: white !important;
-    }
-  }
 }
 
 @layer utilities {
@@ -56,9 +44,6 @@
 
 @layer components {
   #events {
-    /* events scroll bar firefox */
-    scrollbar-color: transparent transparent;
-
     &:hover,
     &:focus-visible {
       scrollbar-color: unset;
