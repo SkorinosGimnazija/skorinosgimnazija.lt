@@ -11,7 +11,7 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
   const isLocal = banner.url.startsWith('/');
 
   return (
-    <div className="my-4 hidden overflow-hidden rounded-lg bg-white bg-opacity-70 px-2 py-4 shadow-md backdrop-blur-lg lg:flex lg:justify-center">
+    <div className="my-4 hidden overflow-hidden rounded-lg bg-white px-2 py-4 shadow-md lg:flex lg:justify-center">
       <Link
         href={banner.url}
         target={isLocal ? null : '_blank'}

@@ -7,7 +7,7 @@ interface Props {
 
 export const Article: React.FC<Props> = ({ children, title }) => {
   return (
-    <article className="overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg">
+    <article className="overflow-hidden rounded-lg bg-white shadow-md">
       <div className="w-full p-8">
         <h2 className="text-2xl">{title}</h2>
         {children}

@@ -21,7 +21,7 @@ export const PostCard: React.FC<Props> = ({ post }) => {
     <article
       title={post.title}
       onClick={() => router.push(`/news/${post.id}/${post.slug}`)}
-      className="group grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white bg-opacity-70 shadow-md backdrop-blur-lg"
+      className="group grid cursor-pointer grid-cols-4 overflow-hidden rounded-lg bg-white shadow-md"
     >
       {post.featuredImage && (
         <div className="relative hidden overflow-hidden lg:block">

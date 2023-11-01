@@ -43,7 +43,7 @@ export const EventList: React.FC<Props> = ({ events }) => {
   }
 
   return (
-    <div className="my-8 hidden rounded-lg bg-white bg-opacity-70 py-4 shadow-md backdrop-blur-lg lg:block">
+    <div className="my-8 hidden rounded-lg bg-white py-4 shadow-md lg:block">
       <div id="events" className="max-h-96 overflow-y-auto" tabIndex={0}>
         {allEvents.map((x) => {
           return <EventItem key={x.id} event={x} />;

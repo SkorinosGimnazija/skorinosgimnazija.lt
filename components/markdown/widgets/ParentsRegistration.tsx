@@ -195,7 +195,7 @@ export const ParentsRegistration: React.FC = () => {
               <button
                 disabled={loading}
                 type="submit"
-                className="flex w-44 items-center justify-center rounded-lg border border-gray-300 bg-white bg-opacity-70 px-5 py-3 text-sm backdrop-blur-lg hover:bg-gray-200"
+                className="flex w-44 items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm hover:bg-gray-200"
               >
                 {loading ? <ImSpinner2 className="h-5 w-5 animate-spin" /> : 'Registruotis'}
               </button>
