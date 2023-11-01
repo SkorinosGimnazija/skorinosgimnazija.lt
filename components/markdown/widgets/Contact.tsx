@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { HiOutlineMail, HiOutlinePhone } from 'react-icons/hi';
 
@@ -13,7 +14,16 @@ interface Props {
 export const Contact: React.FC<Props> = ({ children, image, name, phone, email, title }) => {
   return (
     <div className="mb-10 flex items-center overflow-hidden rounded-lg bg-white shadow-md">
-      {image && <img className="hidden sm:block" src={image} alt={name} width="200px" />}
+      {image && (
+        <Image
+          className="hidden sm:block shrink-0 grow-0"
+          src={image}
+          alt={name}
+          width={200}
+          height={300}
+          quality={95}
+        />
+      )}
       <div className="m-4">
         <p className="text-xl font-bold">{name}</p>
         {title && <p className="mb-4">{title}</p>}
