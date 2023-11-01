@@ -2,7 +2,7 @@ import React from 'react';
 import { MdOutlineRadioButtonChecked, MdOutlineRadioButtonUnchecked } from 'react-icons/md';
 
 interface Props {
-  items: any[];
+  items: unknown[];
   currentIndex: number;
   onClick: (index: number) => void;
 }

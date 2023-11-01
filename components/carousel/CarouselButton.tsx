@@ -4,7 +4,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 
 interface Props {
   onClick: VoidFunction;
-  items: any[];
+  items: unknown[];
   left?: boolean;
 }
 

@@ -5,7 +5,7 @@ import { Post } from '../../components/post/Post';
 import { Seo } from '../../components/seo/Seo';
 import { DefaultLayout } from '../../layouts/DefaultLayout';
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',
