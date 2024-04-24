@@ -54,6 +54,7 @@ export const Carousel: React.FC<Props> = ({ images }) => {
           return (
             <li
               key={id}
+              //@ts-expect-error todo check this sameday...
               ref={(ref) => (imageRefs.current[id] = ref)}
               className={`relative col-start-1 row-start-1 ${
                 id === 0 ? 'opacity-100' : 'opacity-0'

@@ -21,7 +21,7 @@ class Api {
     return response;
   }
 
-  private async fetchPost(url: string, body: {}) {
+  private async fetchPost(url: string, body: unknown) {
     const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
