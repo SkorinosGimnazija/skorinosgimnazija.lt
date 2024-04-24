@@ -15,14 +15,14 @@ export const PostLink: React.FC<Props> = ({ children, href }) => {
   return (
     <Link
       href={href}
-      className="text-blue-600 hover:text-blue-400 hover:underline"
+      className="text-blue-600 hover:text-blue-400 hover:underline text-nowrap"
       target={isLocal ? undefined : '_blank'}
       rel={isLocal ? undefined : 'noreferrer noopener'}
       onClick={(e) => e.stopPropagation()}
     >
       {isExternal && <HiOutlineExternalLink className="inline text-2xl" />}
       {isDoc && <HiOutlineDocumentText className="inline text-2xl" />}
-      {children}
+      <span className="text-wrap">{children}</span>
     </Link>
   );
 };
