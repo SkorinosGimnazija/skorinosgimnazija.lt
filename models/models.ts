@@ -22,12 +22,13 @@ export interface IPost {
 
 export interface IMenu {
   id: number;
+  parentMenuId?: number | null;
   url?: string | null;
   title: string;
   slug: string;
   position: 'side' | 'footer';
   path: string;
-  childMenus: IMenu[];
+  childMenus?: IMenu[] | null;
 }
 
 export interface IEvent {

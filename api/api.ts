@@ -69,8 +69,27 @@ class Api {
 
   public async getMenus(locale: string) {
     try {
-      const menus = await this.fetch(`/menus/public/${locale}`);
-      return menus as IMenu[];
+      const menuItems = await this.fetch(`/menus/public/${locale}`) as IMenu[];
+
+      const subMenuItems:{ [parrentId: number]: IMenu[] } = {} 
+      const rootMenuItems:IMenu[] = [] 
+
+      for (const menuItem of menuItems) {
+        if (menuItem.parentMenuId) {
+          (subMenuItems[menuItem.parentMenuId] ??= []).push(menuItem)
+        } else {
+          rootMenuItems.push(menuItem);
+        }
+      }
+
+      for (const rootMenu of rootMenuItems) {
+        const subMenus = subMenuItems[rootMenu.id]
+        if (subMenus) {
+          rootMenu.childMenus = subMenus
+        }
+      }
+
+      return rootMenuItems;
     } catch (error) {
       console.error(error);
       return [];

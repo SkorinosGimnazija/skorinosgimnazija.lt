@@ -14,7 +14,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
   const isExpanded = useRef(asPath.startsWith(menu.path));
   const expandableRef = useRef<HTMLUListElement>();
   const chevronRef = useRef<HTMLSpanElement>();
-  const isExpandable = menu.childMenus.length > 0;
+  const isExpandable = menu.childMenus != null;
 
   React.useEffect(() => {
     if (isExpandable && isExpanded.current) {
