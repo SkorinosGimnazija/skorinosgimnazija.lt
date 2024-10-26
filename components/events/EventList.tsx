@@ -49,7 +49,7 @@ export const EventList: React.FC<Props> = ({ events }) => {
           return <EventItem key={x.id} event={x} />;
         })}
         {hasMoreEvents && (
-          <div className="flex justify-center" ref={ref}>
+          <div className="flex justify-center overflow-hidden" ref={ref}>
             <ImSpinner2 className="h-5 w-5 animate-spin" />
           </div>
         )}
