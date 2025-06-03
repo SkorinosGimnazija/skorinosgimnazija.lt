@@ -60,7 +60,7 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
           <tbody>
             {filteredData.map((x) => {
               return (
-                <tr key={x.id}>
+                <tr key={`${x.nr}${x.id}`}>
                   <td>{x.nr}</td>
                   <td>{`${x.idPreffix}${x.id}`}</td>
                   <td>{x.classroom}</td>
