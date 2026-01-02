@@ -4,7 +4,7 @@ export interface IBanner {
   url: string;
   width: number;
   height: number;
-  pictureUrl: string;
+  imageUrl: string;
 }
 
 export interface IPost {
@@ -22,13 +22,10 @@ export interface IPost {
 
 export interface IMenu {
   id: number;
-  parentMenuId?: number | null;
   url?: string | null;
   title: string;
-  slug: string;
-  position: 'side' | 'footer';
-  path: string;
-  childMenus?: IMenu[] | null;
+  isExternal: boolean;
+  children?: IMenu[] | null;
 }
 
 export interface IEvent {
@@ -51,6 +48,12 @@ export interface IAppointmentHost {
   displayName: string;
 }
 
+export interface IAppointmentType {
+  id: number;
+  name: string;
+  registrationEndsAt: string;
+}
+
 export interface IAppointmentDate {
   id: number;
   date: string;
@@ -59,18 +62,17 @@ export interface IAppointmentDate {
 export interface IAppointmentRegistration {
   captchaToken: string;
   dateId: number;
-  userName: string;
-  attendeeName: string;
-  attendeeEmail: string;
+  hostId: number;
+  typeId: number;
+  name: string;
+  email: string;
+  note: string;
 }
 
 export interface IAppointmentRegistrationResponse {
-  id: number;
-  attendeeName: string;
-  attendeeEmail: string;
+  id: string;
   dateId: number;
-  eventId: string;
-  userName: string;
+  hostId: number;
 }
 
 export interface IApiErrorResponse {

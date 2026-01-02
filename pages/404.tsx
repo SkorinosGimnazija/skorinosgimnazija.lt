@@ -23,9 +23,9 @@ const NotFound404Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> 
   return (
     <DefaultLayout menus={menus}>
       <Seo title={t.pageNotFound} />
-      <Article title={`404 ${t.pageNotFound}`}>
+      <Article title={`${t.pageNotFound} (404)`}>
         <div className="flex justify-center">
-          <Image src={NotFoundPic} alt={t.pageNotFound} width={400} height={400} />
+          <Image src={NotFoundPic} alt={t.pageNotFound} width={400} height={400} quality={100} />
         </div>
       </Article>
     </DefaultLayout>

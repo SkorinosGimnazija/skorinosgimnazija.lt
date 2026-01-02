@@ -18,6 +18,7 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
   const [searchInput, setSearchInput] = useState('');
   const filteredData = data.filter((x) => x.id.startsWith(searchInput));
 
+
   return (
     <>
       <div className="my-4 flex flex-col items-center gap-3 sm:flex-row">

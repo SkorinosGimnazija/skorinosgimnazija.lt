@@ -9,7 +9,7 @@ const nextConfig = {
     // appDir: true,
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_STATIC_URL.replace(/^https?:\/\//, '').replace(/:\d+$/, '')],
+    domains: ['localhost', 'api.skorinosgimnazija.lt'],
   },
   i18n: {
     locales: ['lt', 'by', 'en'],

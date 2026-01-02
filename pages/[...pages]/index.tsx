@@ -10,11 +10,11 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
 
   for await (const locale of locales ?? []) {
     const rootMenus = await api.getMenus(locale);
-    const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.childMenus ?? []));
+    const allMenus = rootMenus.concat(rootMenus.flatMap((x) => x.children ?? []));
 
     for (const menu of allMenus) {
-      if (!menu.childMenus?.length && !menu.url?.length) {
-        paths.push('/' + locale + menu.path);
+      if (!menu.children && !menu.isExternal) {
+        paths.push('/' + locale + menu.url);
       }
     }
   }

@@ -11,10 +11,10 @@ interface Props {
 
 export const MenuItem: React.FC<Props> = ({ menu }) => {
   const { asPath } = useRouter();
-  const isExpanded = useRef(asPath.startsWith(menu.path));
+  const isExpandable = menu.children != null;
+  const isExpanded = useRef(isExpandable && menu.children!.some(x => asPath == x.url));
   const expandableRef = useRef<HTMLUListElement>();
   const chevronRef = useRef<HTMLSpanElement>();
-  const isExpandable = menu.childMenus != null;
 
   React.useEffect(() => {
     if (isExpandable && isExpanded.current) {
@@ -24,11 +24,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = (e?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    if (!isExpandable) {
-      return;
-    }
-
+  const handleClick = () => {
     if (isExpanded.current) {
       gsap.to(expandableRef.current, { height: 0, x: 0 });
       gsap.to(chevronRef.current, { rotateY: 0 });
@@ -38,8 +34,6 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
       gsap.to(chevronRef.current, { rotateY: 180 });
       isExpanded.current = true;
     }
-
-    e?.preventDefault();
   };
 
   const forceExpand = () => {
@@ -50,38 +44,49 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
     handleClick();
   };
 
+  const rootMenuLink = () => {
+    if (isExpandable || !menu.url) {
+      return (
+        <button className="flex items-center justify-between px-6 py-2 w-full" onClick={handleClick}>
+          {menu.title}
+          <span ref={chevronRef} className="rotate-90 text-2xl">
+            <MdChevronRight />
+          </span>
+        </button>
+      );
+    }
+
+    return (
+      <Link
+        href={menu.url}
+        className="flex items-center justify-between px-6 py-2"
+        target={menu.isExternal ? '_blank' : '_self'}
+        rel={menu.isExternal ? 'noreferrer noopener' : null}
+      >
+        {menu.title}
+      </Link>
+    );
+  }
+
   return (
     <>
       <li className="text-lg transition-colors duration-200 hover:bg-gray-200">
-        <Link
-          href={isExpandable ? '#' : menu.url ?? menu.path}
-          className="flex items-center justify-between px-6 py-2"
-          onClick={handleClick}
-          target={menu.url ? '_blank' : '_self'}
-          rel={menu.url ? 'noreferrer noopener' : null}
-        >
-          {menu.title}
-          {isExpandable && (
-            <span ref={chevronRef} className="rotate-90 text-2xl">
-              <MdChevronRight />
-            </span>
-          )}
-        </Link>
+        {rootMenuLink()}
         {isExpandable && (
           <ul
             ref={expandableRef}
             className="h-0 overflow-hidden pl-5 pr-14"
             style={isExpanded.current ? { height: 'auto', transform: 'translate(20px)' } : null}
           >
-            {menu.childMenus.map((submenu) => {
+            {menu.children.map((submenu) => {
               return (
                 <li key={submenu.id} className="hover:text-gray-500">
                   <Link
-                    href={submenu.url ?? submenu.path}
+                    href={submenu.url!}
                     onFocus={forceExpand}
                     className="my-1 block"
-                    target={submenu.url ? '_blank' : '_self'}
-                    rel={submenu.url ? 'noreferrer noopener' : null}
+                    target={submenu.isExternal ? '_blank' : '_self'}
+                    rel={submenu.isExternal ? 'noreferrer noopener' : null}
                   >
                     {submenu.title}
                   </Link>

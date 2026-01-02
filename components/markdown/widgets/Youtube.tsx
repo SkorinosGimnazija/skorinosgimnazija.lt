@@ -1,20 +1,18 @@
 import React from 'react';
 
 interface Props {
-  children: [string];
+  id:string;
 }
 
-export const Youtube: React.FC<Props> = ({ children }) => {
+export const Youtube: React.FC<Props> = ({ id }) => {
   return (
-    <div className="mt-8 flex w-full justify-center">
       <iframe
-        src={`https://www.youtube-nocookie.com/embed/${children[0]}`}
-        className="aspect-video w-full max-w-full"
+        src={`https://www.youtube-nocookie.com/embed/${id}`}
+        className="aspect-video w-full max-w-full mt-8 border-0"
         title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       />
-    </div>
   );
 };

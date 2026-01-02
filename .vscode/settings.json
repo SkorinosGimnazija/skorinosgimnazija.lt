@@ -1,7 +1,0 @@
-{
-  "css.validate": false,
-  "stylelint.enable": true,
-  "scss.validate": false,
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
-}

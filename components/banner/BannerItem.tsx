@@ -20,10 +20,11 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
       >
         <Image
           className="transition-transform duration-300 hover:scale-105"
-          src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${banner.pictureUrl}`}
+          src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${banner.imageUrl}`}
           width={banner.width}
           height={banner.height}
           alt={banner.title}
+          quality={90}
         />
       </Link>
     </div>

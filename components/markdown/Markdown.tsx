@@ -21,10 +21,10 @@ export const Markdown: React.FC<Props> = ({ children }) => {
     <MarkdownJsx
       options={{
         forceBlock: true,
+        disableAutoLink: true,
         overrides: {
           a: PostLink,
           table: PostTable,
-
           Contact: Contact,
           Map: Map,
           Youtube: Youtube,
@@ -32,8 +32,7 @@ export const Markdown: React.FC<Props> = ({ children }) => {
           InvitedStudentsList: InvitedStudentsList,
         },
       }}
-    >
-      {children}
-    </MarkdownJsx>
+      children={children}
+    />
   );
 };

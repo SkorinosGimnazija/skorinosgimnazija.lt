@@ -17,14 +17,14 @@ export const Sitemap: React.FC<Props> = ({ menus }) => {
         {menus.map((rootMenu) => {
           return (
             <li key={rootMenu.id}>
-              {rootMenu.childMenus?.length > 0 ? (
+              {rootMenu.children?.length > 0 ? (
                 <>
                   {rootMenu.title}
                   <ul className="list-none">
-                    {rootMenu.childMenus.map((childMenu) => {
+                    {rootMenu.children.map((childMenu) => {
                       return (
                         <li key={childMenu.id}>
-                          <PostLink href={childMenu.url ?? childMenu.path}>
+                          <PostLink href={childMenu.url}>
                             {childMenu.title}
                           </PostLink>
                         </li>
@@ -33,7 +33,7 @@ export const Sitemap: React.FC<Props> = ({ menus }) => {
                   </ul>
                 </>
               ) : (
-                <PostLink href={rootMenu.url ?? rootMenu.path}>{rootMenu.title}</PostLink>
+                <PostLink href={rootMenu.url}>{rootMenu.title}</PostLink>
               )}
             </li>
           );

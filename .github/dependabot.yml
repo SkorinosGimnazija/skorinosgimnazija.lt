@@ -6,6 +6,8 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "22:00"
+    ignore:
+      - dependency-name: "markdown-to-jsx"
     groups:
       all:
         patterns: [ "*" ]

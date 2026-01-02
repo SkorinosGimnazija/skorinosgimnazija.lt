@@ -7,10 +7,11 @@ import { Seo } from '../components/seo/Seo';
 import { useTranslation } from '../hooks/useTranslation';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import { IPost } from '../models/models';
+import config from '../next.config';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const [posts, menus, banners, events] = await Promise.all([
-    api.getPosts(locale, 0),
+    api.getPosts(locale, 1),
     api.getMenus(locale),
     api.getBanners(locale),
     api.getEvents(0),
@@ -40,9 +41,9 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const pageNumber = useRef(0);
 
   useEffect(() => {
-    pageNumber.current = 0;
+    pageNumber.current = 1;
     setAllPosts(posts);
-    setNoMorePosts(false);
+    setNoMorePosts(locale != config.i18n.defaultLocale);
   }, [locale, posts]);
 
   const handlePostsLoad = async () => {

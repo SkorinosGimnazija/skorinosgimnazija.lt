@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           <ul className="flex items-center justify-center gap-2 md:justify-end">
             <li>
               <a
-                href="https://www.facebook.com/Vilniaus-Pranci%C5%A1kaus-Skorinos-gimnazija-108554757217249/"
+                href="https://www.facebook.com/profile.php?id=100057665117865"
                 title="Facebook"
                 target="_blank"
                 rel="noreferrer"

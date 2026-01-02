@@ -30,6 +30,7 @@ export const PostCard: React.FC<Props> = ({ post }) => {
             src={`${process.env.NEXT_PUBLIC_STATIC_URL}/${post.featuredImage}`}
             alt={post.title}
             fill
+            sizes="25vw"
             quality={90}
           />
         </div>
