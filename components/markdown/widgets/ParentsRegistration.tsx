@@ -45,11 +45,14 @@ export const ParentsRegistration: React.FC = () => {
         .then((token) => {
           api
             .registerAppointment({
+              // todo fix
               captchaToken: token,
               dateId: Number(date),
-              userName: teacher,
-              attendeeEmail: emailRef.current!.value,
-              attendeeName: nameRef.current!.value,
+              hostId: 1,
+              typeId: 1,
+              email: emailRef.current!.value,
+              name: nameRef.current!.value,
+              note: '',
             })
             .then((response) => {
               if (!response) {
