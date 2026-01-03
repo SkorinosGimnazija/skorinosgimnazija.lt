@@ -7,8 +7,7 @@
   ],
   "scripts": {
     "dev:client": "next dev -p 3001",
-    "dev:static": "node ../mokytojams.skorinosgimnazija.lt/dev-static-server.js",
-    "dev:api": "dotnet run --project ../api.skorinosgimnazija.lt/src/API",
+    "dev:api": "dotnet run --project ../api.skorinosgimnazija.lt/API",
     "dev:admin": "cd ../mokytojams.skorinosgimnazija.lt && npm run dev:client",
     "build": "next build",
     "start": "next start -p 5000"
