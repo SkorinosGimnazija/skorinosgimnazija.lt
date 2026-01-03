@@ -99,7 +99,7 @@ class Api {
 
   public async getMenusMeta() {
     try {
-      const menus = await this.fetch('/meta/menus');
+      const menus = await this.fetch('/public/meta/menus');
       return menus as IMeta[];
     } catch (error) {
       console.error(error);
@@ -109,7 +109,7 @@ class Api {
 
   public async getPostsMeta() {
     try {
-      const posts = await this.fetch('/meta/posts');
+      const posts = await this.fetch('/public/meta/posts');
       return posts as IMeta[];
     } catch (error) {
       console.error(error);
@@ -119,7 +119,7 @@ class Api {
 
   public async getLocalesMeta() {
     try {
-      const locales = await this.fetch('/meta/locales');
+      const locales = await this.fetch('/public/meta/locales');
       return locales as IMeta[];
     } catch (error) {
       console.error(error);

@@ -10,22 +10,19 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
   ]);
 
   res.setHeader('Content-Type', 'application/xml');
-
   res.write(
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${locales.map((x) => XmlUrl('', x.ln, x.date)).join('')}
-      ${menus.map((x) => XmlUrl(x.url, x.ln, x.date)).join('')}
-      ${posts.map((x) => XmlUrl('/news' + x.url, x.ln, x.date)).join('')}
+      ${locales.map((x) => formatXmlUrl('', x.ln, x.date)).join('')}
+      ${menus.map((x) => formatXmlUrl(x.url, x.ln, x.date)).join('')}
+      ${posts.map((x) => formatXmlUrl('/news' + x.url, x.ln, x.date)).join('')}
     </urlset>`
   );
-
   res.end();
 };
 
-const XmlUrl = (url: string, language: string, date: string) => {
-  const publicUrl = process.env.NEXT_PUBLIC_URL;
-  const defaultLocale = config.i18n.defaultLocale;
-  const fullUrl = publicUrl + (language === defaultLocale ? '' : '/' + language) + url;
+const formatXmlUrl = (url: string, language: string, date: string) => {
+  const langPath = language === config.i18n.defaultLocale ? '' : `/${language}`;
+  const fullUrl = `${process.env.NEXT_PUBLIC_URL}${langPath}${url}`;
 
   return `<url><loc>${fullUrl}</loc><lastmod>${date}</lastmod></url>`;
 };
