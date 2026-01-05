@@ -6,6 +6,8 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "22:00"
+    allow:
+      - dependency-type: "production"
     ignore:
       - dependency-name: "markdown-to-jsx"
     groups:
