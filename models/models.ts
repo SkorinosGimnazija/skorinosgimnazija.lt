@@ -31,10 +31,9 @@ export interface IMenu {
 export interface IEvent {
   id: string;
   title: string;
+  allDay: boolean;
   startDate?: string | null;
-  startDateTime?: string | null;
   endDate?: string | null;
-  endDateTime?: string | null;
 }
 
 export interface IMeta {

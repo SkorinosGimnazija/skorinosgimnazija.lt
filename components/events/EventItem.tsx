@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const EventItem: React.FC<Props> = ({ event }) => {
-  const multipleDays = event.startDate && event.startDate !== event.endDate;
+  const multipleDays = event.allDay && event.startDate !== event.endDate;
 
   return (
     <div className="mb-4 border-l-[6px] border-yellow-300 py-1 px-4 last:mb-0">
@@ -17,7 +17,7 @@ export const EventItem: React.FC<Props> = ({ event }) => {
         {multipleDays ? (
           <EventDateRange start={event.startDate} end={event.endDate} />
         ) : (
-          <EventDate date={event.startDate} dateTime={event.startDateTime} />
+          <EventDate date={event.startDate} allDay={event.allDay} />
         )}
       </p>
     </div>

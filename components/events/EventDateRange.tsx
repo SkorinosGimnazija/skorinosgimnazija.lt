@@ -9,9 +9,9 @@ interface Props {
 export const EventDateRange: React.FC<Props> = ({ start, end }) => {
   return (
     <>
-      <EventDate date={start} />
+      <EventDate date={start} allDay={true} />
       <span> - </span>
-      <EventDate date={end} />
+      <EventDate date={end} allDay={true} />
     </>
   );
 };
