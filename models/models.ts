@@ -68,6 +68,16 @@ export interface IAppointmentRegistration {
   note: string;
 }
 
+export interface IBullyReport {
+  captchaToken: string;
+  victimName: string;
+  bullyName: string;
+  location: string;
+  details: string;
+  observers?: string;
+  date: string;
+}
+
 export interface IAppointmentRegistrationResponse {
   id: string;
   dateId: number;
@@ -77,7 +87,5 @@ export interface IAppointmentRegistrationResponse {
 export interface IApiErrorResponse {
   title: string;
   status: number;
-  errors: {
-    [key: string]: string[];
-  };
+  errors: { name: string, reason: string }[]
 }

@@ -6,6 +6,7 @@ import type {
   IAppointmentRegistrationResponse,
   IAppointmentType,
   IBanner,
+  IBullyReport,
   IEvent,
   IMenu,
   IMeta,
@@ -161,6 +162,16 @@ class Api {
     try {
       const appointment = await this.fetchPost('/public/appointments', body);
       return appointment as IAppointmentRegistrationResponse & IApiErrorResponse;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  public async reportBully(body: IBullyReport) {
+    try {
+      const response = await this.fetchPost('/public/bully-reports', body);
+      return response as {} & IApiErrorResponse;
     } catch (error) {
       console.error(error);
       return null;
