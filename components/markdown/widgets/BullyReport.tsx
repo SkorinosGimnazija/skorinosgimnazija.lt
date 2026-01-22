@@ -32,7 +32,7 @@ export const BullyReport: React.FC = () => {
                 return;
               }
 
-              if (response.errors) {
+              if ('errors' in response) {
                 toast.error(response.errors.map(x => x.reason).join('; '));
               } else {
                 toast.success('Sėkmingai pranešta');

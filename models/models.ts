@@ -43,14 +43,14 @@ export interface IMeta {
 }
 
 export interface IAppointmentHost {
-  userName: string;
-  displayName: string;
+  id: number;
+  name: string;
+  normalizeName: string;
 }
 
 export interface IAppointmentType {
   id: number;
-  name: string;
-  registrationEndsAt: string;
+  description: string;
 }
 
 export interface IAppointmentDate {
@@ -86,6 +86,7 @@ export interface IAppointmentRegistrationResponse {
 
 export interface IApiErrorResponse {
   title: string;
+  detail: string;
   status: number;
   errors: { name: string, reason: string }[]
 }

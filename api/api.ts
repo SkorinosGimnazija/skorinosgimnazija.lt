@@ -20,19 +20,22 @@ class Api {
       console.error(request.url, request.status, request.statusText);
       throw 'Server error';
     }
-    const response = await request.json();
-    return response;
+
+    return await request.json();
   }
 
-  private async fetchPost(url: string, body: unknown) {
+  private async fetchPost<T>(url: string, body: unknown) {
     const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
 
-    const response = await request.json();
-    return response;
+    if (request.status == 500) {
+      return null;
+    }
+
+    return (await request.json()) as T | IApiErrorResponse;
   }
 
   public async getPosts(locale: string, page: number) {
@@ -150,8 +153,8 @@ class Api {
 
   public async getAppointmentDates(typeId: number | string, hostId: number | string) {
     try {
-      const hosts = await this.fetch(`/public/appointments/types/${typeId}/hosts/${hostId}`);
-      return hosts as IAppointmentDate[];
+      const dates = await this.fetch(`/public/appointments/types/${typeId}/hosts/${hostId}/dates`);
+      return dates as IAppointmentDate[];
     } catch (error) {
       console.error(error);
       return [];
@@ -160,8 +163,7 @@ class Api {
 
   public async registerAppointment(body: IAppointmentRegistration) {
     try {
-      const appointment = await this.fetchPost('/public/appointments', body);
-      return appointment as IAppointmentRegistrationResponse & IApiErrorResponse;
+      return  await this.fetchPost<IAppointmentRegistrationResponse>('/public/appointments', body);
     } catch (error) {
       console.error(error);
       return null;
@@ -170,8 +172,7 @@ class Api {
 
   public async reportBully(body: IBullyReport) {
     try {
-      const response = await this.fetchPost('/public/bully-reports', body);
-      return response as {} & IApiErrorResponse;
+      return await this.fetchPost<void>('/public/bully-reports', body);
     } catch (error) {
       console.error(error);
       return null;
