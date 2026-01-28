@@ -193,7 +193,7 @@ export const ParentsRegistration: React.FC = () => {
 
             <div>
               <label htmlFor="reg-note" className="block text-sm font-medium text-gray-700">
-                Vaiko vardas, pavardę ir klasę *
+                Vaiko vardas, pavardė ir klasė *
               </label>
               <input
                 ref={noteRef}
