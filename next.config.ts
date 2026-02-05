@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
   experimental: {
-    scrollRestoration: true,
-    // appDir: true,
+    scrollRestoration: true
   },
   images: {
     remotePatterns: [
