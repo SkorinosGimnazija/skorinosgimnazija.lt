@@ -1,6 +1,9 @@
 {
   "name": "skorinosgimnazija.lt",
   "private": true,
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "cacheDirectories": [
     "node_modules",
     ".next/cache"
