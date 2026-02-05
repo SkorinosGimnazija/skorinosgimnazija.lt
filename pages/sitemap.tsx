@@ -7,7 +7,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const [menus] = await Promise.all([api.getMenus(locale)]);
+  const [menus] = await Promise.all([api.getMenus(locale!)]);
 
   return {
     props: {

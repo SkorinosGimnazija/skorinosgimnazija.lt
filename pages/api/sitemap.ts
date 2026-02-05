@@ -21,7 +21,7 @@ const sitemap = async (_req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const formatXmlUrl = (url: string, language: string, date: string) => {
-  const langPath = language === config.i18n.defaultLocale ? '' : `/${language}`;
+  const langPath = language === config.i18n!.defaultLocale ? '' : `/${language}`;
   const fullUrl = `${process.env.NEXT_PUBLIC_URL}${langPath}${url}`;
 
   return `<url><loc>${fullUrl}</loc><lastmod>${date}</lastmod></url>`;

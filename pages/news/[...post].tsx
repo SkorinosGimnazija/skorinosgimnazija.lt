@@ -14,8 +14,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const [post, menus] = await Promise.all([
-    api.getPostById(params.post?.[0] ?? ''),
-    api.getMenus(locale),
+    api.getPostById(params?.post?.[0] ?? ''),
+    api.getMenus(locale!),
   ]);
 
   if (!post) {
@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
       post,
       menus,
     },
-    revalidate: 60 * 60, // 1h
+    revalidate: 60 * 5, // 5min
   };
 };
 

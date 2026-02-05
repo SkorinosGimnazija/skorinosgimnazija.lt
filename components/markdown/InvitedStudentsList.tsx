@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
-  const inputRef = useRef<HTMLInputElement>();
+  const inputRef = useRef<HTMLInputElement>(null);
   const data = useMemo(() => {
     return children[0]
       .split(/\r?\n/)

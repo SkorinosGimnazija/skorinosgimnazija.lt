@@ -11,9 +11,9 @@ import config from '../next.config';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const [posts, menus, banners, events] = await Promise.all([
-    api.getPosts(locale, 1),
-    api.getMenus(locale),
-    api.getBanners(locale),
+    api.getPosts(locale!, 1),
+    api.getMenus(locale!),
+    api.getBanners(locale!),
     api.getEvents(0),
   ]);
 
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       banners,
       events,
     },
-    revalidate: 60 * 60, // 1h
+    revalidate: 60 * 5, // 5min
   };
 };
 
@@ -42,14 +42,15 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
   useEffect(() => {
     pageNumber.current = 1;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAllPosts(posts);
-    setNoMorePosts(locale != config.i18n.defaultLocale);
+    setNoMorePosts(locale != config.i18n!.defaultLocale);
   }, [locale, posts]);
 
   const handlePostsLoad = async () => {
     setIsLoading(true);
 
-    const newPosts = await api.getPosts(locale, ++pageNumber.current);
+    const newPosts = await api.getPosts(locale!, ++pageNumber.current);
 
     if (!newPosts.length) {
       setNoMorePosts(true);

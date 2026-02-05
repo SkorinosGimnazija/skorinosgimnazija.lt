@@ -1,6 +1,6 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  swcMinify: true,
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   compress: false,
   reactStrictMode: true,
   poweredByHeader: false,
@@ -9,7 +9,19 @@ const nextConfig = {
     // appDir: true,
   },
   images: {
-    domains: ['localhost', 'api.skorinosgimnazija.lt'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost'
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.skorinosgimnazija.lt',
+      },
+    ],
+    qualities: [75, 80, 90, 95, 100],
+    contentDispositionType: 'inline',
+    dangerouslyAllowLocalIP: true
   },
   i18n: {
     locales: ['lt', 'by', 'en'],
@@ -54,4 +66,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

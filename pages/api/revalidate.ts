@@ -7,11 +7,11 @@ const revalidate = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    if (!config.i18n.locales.includes(req.body.lang)) {
+    if (!config.i18n!.locales.includes(req.body.lang)) {
       return res.status(400).json({ success: false, error: 'Invalid language' });
     }
 
-    const lang = req.body.lang === config.i18n.defaultLocale ? '' : (req.body.lang as string);
+    const lang = req.body.lang === config.i18n!.defaultLocale ? '' : (req.body.lang as string);
     const slug = req.body.slug as string | undefined;
     const postId = req.body.postId as string | undefined;
 

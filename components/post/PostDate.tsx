@@ -4,7 +4,7 @@ import { toLocalDate } from '../../utils/dateFormat';
 
 interface Props {
   published: string;
-  modified?: string;
+  modified?: string | null;
   hide?: boolean;
 }
 

@@ -14,8 +14,8 @@ export const BannerItem: React.FC<Props> = ({ banner }) => {
     <div className="my-4 hidden overflow-hidden rounded-lg bg-white px-2 py-4 shadow-md lg:flex lg:justify-center">
       <Link
         href={banner.url}
-        target={isLocal ? null : '_blank'}
-        rel={isLocal ? null : 'noreferrer noopener'}
+        target={isLocal ? undefined : '_blank'}
+        rel={isLocal ? undefined : 'noreferrer noopener'}
         title={banner.title}
       >
         <Image

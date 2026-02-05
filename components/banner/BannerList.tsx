@@ -3,14 +3,10 @@ import { IBanner } from '../../models/models';
 import { BannerItem } from './BannerItem';
 
 interface Props {
-  banners?: IBanner[];
+  banners: IBanner[];
 }
 
 export const BannerList: React.FC<Props> = ({ banners }) => {
-  if (!banners?.length) {
-    return null;
-  }
-
   return (
     <div className="mt-8">
       {banners?.map((x) => {

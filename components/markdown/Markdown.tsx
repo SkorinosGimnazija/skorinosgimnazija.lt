@@ -34,7 +34,8 @@ export const Markdown: React.FC<Props> = ({ children }) => {
           BullyReport: BullyReport,
         },
       }}
-      children={children}
-    />
+    >
+      {children}
+    </MarkdownJsx>
   );
 };

@@ -9,7 +9,7 @@ import { IEvent } from '../../models/models';
 import { EventItem } from './EventItem';
 
 interface Props {
-  events?: IEvent[];
+  events: IEvent[];
 }
 
 export const EventList: React.FC<Props> = ({ events }) => {
@@ -38,7 +38,7 @@ export const EventList: React.FC<Props> = ({ events }) => {
     },
   });
 
-  if (!events?.length || locale !== 'lt') {
+  if (locale !== 'lt') {
     return null;
   }
 

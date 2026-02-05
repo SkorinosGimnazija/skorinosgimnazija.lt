@@ -47,8 +47,8 @@ export const DefaultLayout: React.FC<Props> = ({ children, menus, banners, event
         <main className="col-span-full w-full lg:col-span-5">{children}</main>
         <aside className="col-span-full row-start-1 w-full lg:col-span-2 lg:row-start-auto">
           <MenuList menus={menus} />
-          <EventList events={events} />
-          <BannerList banners={banners} />
+          {events && <EventList events={events} />}
+          {banners && <BannerList banners={banners} />}
         </aside>
       </section>
       <section className="bg-gray-200">

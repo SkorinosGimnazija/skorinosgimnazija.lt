@@ -32,8 +32,8 @@ export interface IEvent {
   id: string;
   title: string;
   allDay: boolean;
-  startDate?: string | null;
-  endDate?: string | null;
+  startDate: string;
+  endDate: string;
 }
 
 export interface IMeta {

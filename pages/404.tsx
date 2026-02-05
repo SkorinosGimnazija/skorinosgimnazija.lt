@@ -9,7 +9,7 @@ import { useTranslation } from '../hooks/useTranslation';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const [menus] = await Promise.all([api.getMenus(locale)]);
+  const [menus] = await Promise.all([api.getMenus(locale!)]);
 
   return {
     props: { menus },
@@ -25,7 +25,7 @@ const NotFound404Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> 
       <Seo title={t.pageNotFound} />
       <Article title={`${t.pageNotFound} (404)`}>
         <div className="flex justify-center">
-          <Image src={NotFoundPic} alt={t.pageNotFound} width={400} height={400} quality={100} />
+          <Image src={NotFoundPic} alt={t.pageNotFound} width={400} height={400} quality={95} />
         </div>
       </Article>
     </DefaultLayout>
