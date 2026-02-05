@@ -4,10 +4,6 @@
   "engines": {
     "node": "24.x"
   },
-  "cacheDirectories": [
-    "node_modules",
-    ".next/cache"
-  ],
   "scripts": {
     "dev:client": "next dev -p 3001",
     "dev:api": "dotnet run --project ../api.skorinosgimnazija.lt/API",
