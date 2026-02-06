@@ -21,8 +21,8 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
     "@types/grecaptcha": "^3.0.3",
-    "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
+    "@types/node": "^25.2.1",
+    "@types/react": "^19.2.13",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.2",
     "eslint": "^9.0.0",
