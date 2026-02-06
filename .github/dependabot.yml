@@ -23,3 +23,16 @@ updates:
     groups:
       all-actions:
         patterns: [ "*" ]
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "22:00"
+    groups:
+      all-images:
+        patterns: [ "*" ]
+    ignore:
+      - dependency-name: "node"
+        update-types: [ "version-update:semver-major" ]
