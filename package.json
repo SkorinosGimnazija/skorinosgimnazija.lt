@@ -15,19 +15,19 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.4.0",
-    "react-icons": "^5.2.0",
+    "react-icons": "^5.6.0",
     "react-intersection-observer": "^10.0.3"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
     "@types/grecaptcha": "^3.0.3",
-    "@types/node": "^24.11.0",
+    "@types/node": "^24.12.0",
     "@types/react": "^19.2.13",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.27",
-    "eslint": "^10.0.2",
+    "eslint": "^10.0.3",
     "eslint-config-next": "16.1.6",
-    "postcss": "^8.4.6",
+    "postcss": "^8.5.8",
     "tailwindcss": "^3.0.18",
     "typescript": "^5.0.0"
   }
