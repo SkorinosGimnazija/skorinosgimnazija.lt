@@ -47,7 +47,7 @@ export const MenuItem: React.FC<Props> = ({ menu }) => {
   const rootMenuLink = () => {
     if (isExpandable || !menu.url) {
       return (
-        <button className="flex items-center justify-between px-6 py-2 w-full" onClick={handleClick}>
+        <button className="text-left flex items-center justify-between px-6 py-2 w-full" onClick={handleClick}>
           {menu.title}
           <span ref={chevronRef} className="rotate-90 text-2xl">
             <MdChevronRight />
