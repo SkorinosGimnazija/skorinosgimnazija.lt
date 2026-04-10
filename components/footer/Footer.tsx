@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               </p>
               <p>Steigėjas – Vilniaus miesto savivaldybė</p>
               <p>Teisinė forma – biudžetinė įstaiga</p>
-              <p>Mokomoji kalba - baltarusių</p>
+              <p>Mokomoji kalba - lietuvių ir baltarusių</p>
               <p>Duomenys kaupiami ir saugomi Juridinių asmenų registre, kodas 191722390</p>
             </>
           )}
