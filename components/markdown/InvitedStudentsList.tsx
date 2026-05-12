@@ -1,29 +1,26 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react'
 
 interface Props {
   children: [string];
 }
 
 export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null)
   const data = useMemo(() => {
-    return children[0]
-      .split(/\r?\n/)
-      .filter((x) => x.length > 0)
-      .map((x) => {
-        const [nr, idPreffix, id, classroom, score, result] = x.split(',');
-        return { nr, idPreffix, id, classroom, score, result };
-      });
-  }, [children]);
-  const [searchInput, setSearchInput] = useState('');
-  const filteredData = data.filter((x) => x.id.startsWith(searchInput));
-
+    return children[0].split(/\r?\n/).filter((x) => x.length > 0).map((x) => {
+      const [nr, idPrefix, id, status, score, result] = x.split('|')
+      return { nr, idPrefix, id, status, score, result }
+    })
+  }, [children])
+  const [searchInput, setSearchInput] = useState('')
+  const filteredData = data.filter((x) => x.id.startsWith(searchInput))
 
   return (
     <>
       <div className="my-4 flex flex-col items-center gap-3 sm:flex-row">
         <label htmlFor="student-search">Paieška:</label>
-        <div className="flex items-center rounded-md border border-gray-300 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-600">
+        <div
+          className="flex items-center rounded-md border border-gray-300 bg-white shadow-sm focus-within:ring-2 focus-within:ring-blue-600">
           <span
             className="cursor-text select-none py-2 pl-3 text-base"
             onClick={() => inputRef.current?.focus()}
@@ -35,7 +32,7 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
             value={searchInput}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
-                setSearchInput(e.target.value.trim());
+                setSearchInput(e.target.value.trim())
               }
             }}
             type="search"
@@ -50,29 +47,29 @@ export const InvitedStudentsList: React.FC<Props> = ({ children }) => {
       <div className="overflow-x-auto">
         <table className="table text-center">
           <thead>
-            <tr>
-              <th className="w-1/12">Eil. Nr.</th>
-              <th className="w-1/6">Prašymo registracijos numeris</th>
-              <th className="w-1/6">Klasė</th>
-              <th className="w-1/6">Pirmumo taškų suma</th>
-              <th>Mokinių priėmimo komisijos sprendimas</th>
-            </tr>
+          <tr>
+            <th className="w-1/12">Eil. Nr.</th>
+            <th className="w-1/6">MOK numeris</th>
+            <th className="w-1/6">Teritorinis / neteritorinis/ be eilės</th>
+            <th className="w-1/6">Pirmumo taškų suma</th>
+            <th>Priimtas / nepriimtas</th>
+          </tr>
           </thead>
           <tbody>
-            {filteredData.map((x) => {
-              return (
-                <tr key={`${x.nr}${x.id}`}>
-                  <td>{x.nr}</td>
-                  <td>{`${x.idPreffix}${x.id}`}</td>
-                  <td>{x.classroom}</td>
-                  <td>{x.score}</td>
-                  <td>{x.result}</td>
-                </tr>
-              );
-            })}
+          {filteredData.map((x) => {
+            return (
+              <tr key={x.id}>
+                <td>{x.nr}</td>
+                <td>{`${x.idPrefix}${x.id}`}</td>
+                <td>{x.status}</td>
+                <td>{x.score}</td>
+                <td>{x.result}</td>
+              </tr>
+            )
+          })}
           </tbody>
         </table>
       </div>
     </>
-  );
-};
+  )
+}
