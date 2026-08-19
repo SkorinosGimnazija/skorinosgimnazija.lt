@@ -1,0 +1,33 @@
+{
+  "school": {
+    "name": "Vilniaus Pranciškaus Skorinos gimnazija",
+    "nameShort": "P. Skorinos gimnazija",
+    "address": "Sietyno g. 21, Vilnius LT-04316",
+    "phone": "Tel. +370 5 245 9127",
+    "email": "rastine@skorinos.vilnius.lm.lt"
+  },
+  "general": {
+    "sitemap": "Svetainės medis",
+    "modified": "Atnaujinta",
+    "pageNotFound": "Puslapis nerastas",
+    "next": "Kitas",
+    "nextPage": "Kitas puslapis",
+    "previous": "Ankstesnis",
+    "previousPage": "Ankstesnis puslapis",
+    "menu": "Meniu"
+  },
+  "calendar": {
+    "add": "Pridėti prie Google kalendoriaus",
+    "id": "c_2kn8sdmcsm9mm1bqbk3s1lfncg"
+  },
+  "footer": {
+    "content": "<p>Gimnazija vykdo priešmokyklinio, pradinio, pagrindinio ir vidurinio ugdymo programas</p><p>Steigėjas – Vilniaus miesto savivaldybė</p><p>Teisinė forma – biudžetinė įstaiga</p><p>Mokomoji kalba - lietuvių ir baltarusių</p><p>Duomenys kaupiami ir saugomi Juridinių asmenų registre, kodas 191722390</p>"
+  },
+  "contacts": {
+    "phone": "Tel.",
+    "email": "El. p."
+  },
+  "request": {
+    "serverError": "Serverio klaida. Pabandykite vėliau"
+  }
+}

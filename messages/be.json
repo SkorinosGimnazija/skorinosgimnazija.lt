@@ -1,0 +1,33 @@
+{
+  "school": {
+    "name": "Віленская гімназія імя Францыска Скарыны",
+    "nameShort": "Гімназія імя Ф. Скарыны",
+    "address": "Вул. Сеціно, 21 Вільнюс LT-04316",
+    "phone": "Tэл. +370 5 245 9127",
+    "email": "rastine@skorinos.vilnius.lm.lt"
+  },
+  "general": {
+    "sitemap": "Карта сайта",
+    "modified": "Абноўлена",
+    "pageNotFound": "Старонка не знойдзена",
+    "next": "Наступны",
+    "nextPage": "Наступная старонка",
+    "previous": "Папярэдні",
+    "previousPage": "Папярэдняя старонка",
+    "menu": "Меню"
+  },
+  "calendar": {
+    "add": "Дадаць у Google Каляндар",
+    "id": ""
+  },
+  "footer": {
+    "content": ""
+  },
+  "contacts": {
+    "phone": "Tэл.",
+    "email": "Эл. п."
+  },
+  "request": {
+    "serverError": "Памылка сервера. Паспрабуйце пазней"
+  }
+}

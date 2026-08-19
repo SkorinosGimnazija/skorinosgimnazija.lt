@@ -1,0 +1,33 @@
+{
+  "school": {
+    "name": "Vilnius Pranciskaus Skorinos gymnasium",
+    "nameShort": "P. Skorinos gymnasium",
+    "address": "Sietyno str. 21, Vilnius LT-04316",
+    "phone": "Phone +370 5 245 9127",
+    "email": "rastine@skorinos.vilnius.lm.lt"
+  },
+  "general": {
+    "sitemap": "Sitemap",
+    "modified": "Updated",
+    "pageNotFound": "Page not found",
+    "next": "Next",
+    "nextPage": "Next page",
+    "previous": "Previous",
+    "previousPage": "Previous page",
+    "menu": "Menu"
+  },
+  "calendar": {
+    "add": "Add to Google Calendar",
+    "id": ""
+  },
+  "footer": {
+    "content": ""
+  },
+  "contacts": {
+    "phone": "Phone",
+    "email": "E-mail"
+  },
+  "request": {
+    "serverError": "Server error. Try again later"
+  }
+}

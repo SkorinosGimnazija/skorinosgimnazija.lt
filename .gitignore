@@ -44,3 +44,11 @@ next-env.d.ts
 
 # JetBrains
 .idea/
+.run/
+
+# AI
+.ai/
+.aiassistant/
+.agents/
+.junie/
+AGENTS.md
