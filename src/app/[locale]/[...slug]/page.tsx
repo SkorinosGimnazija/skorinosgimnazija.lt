@@ -20,10 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     // do not set description if no meta
     ...(post.meta && { description: post.meta }),
-    openGraph: {
-      type: 'article',
-      images: [{ url: '/logo.png' }],
-    },
   }
 }
 

@@ -42,6 +42,9 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [{ url: '/logo.png' }],
     },
+    twitter: {
+      card: 'summary',
+    },
   }
 }
 
