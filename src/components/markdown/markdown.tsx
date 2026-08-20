@@ -20,7 +20,9 @@ export function Markdown({ children }: { children?: string | null }) {
       className={clsx(
         'leading-relaxed',
         'text-base md:text-lg',
-        '[&_p]:mb-2 [&_ol]:mb-2 [&_ul]:mb-2',
+        '[&_p]:mb-2',
+        '[&_ol]:mb-2 [&_ol]:ml-5 [&_ol]:list-decimal',
+        '[&_ul]:mb-2 [&_ul]:ml-5 [&_ul]:list-disc',
       )}
       options={{
         forceBlock: true,
