@@ -10,7 +10,7 @@ type Props = PageProps<'/[locale]/news/[...slug]'>
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = await getLocale()
   const { slug: [id] } = await params
-  const post = await getPostById(id)
+  const post = await getPostById(locale, id)
 
   if (!post) {
     const t = await getTranslations('general')
@@ -32,8 +32,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function NewsPage({ params }: Props) {
+  const locale = await getLocale()
   const { slug: [id] } = await params
-  const post = await getPostById(id)
+  const post = await getPostById(locale, id)
 
   if (!post) {
     notFound()

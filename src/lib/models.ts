@@ -13,6 +13,7 @@ export interface PostResponse {
   modifiedAt?: string | null;
   slug: string;
   title: string;
+  languageId: string;
   introText?: string | null;
   text?: string | null;
   meta?: string | null;

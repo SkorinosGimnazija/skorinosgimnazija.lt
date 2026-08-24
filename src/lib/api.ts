@@ -61,7 +61,7 @@ export async function getPosts(locale: string, page: string | number) {
   return data
 }
 
-export async function getPostById(id: string) {
+export async function getPostById(locale: string, id: string) {
   const response = await fetchGet(`/public/posts/${id}`,
     { revalidate: REVALIDATION, tags: [`${TAG.POSTS}:${id}`] },
   )
@@ -70,7 +70,12 @@ export async function getPostById(id: string) {
     return null
   }
 
-  return await response.json() as PostResponse
+  const data = await response.json() as PostResponse
+  if (data.languageId !== locale) {
+    return null
+  }
+
+  return data
 }
 
 export async function getPostBySlug(locale: string, slug: string[]) {
