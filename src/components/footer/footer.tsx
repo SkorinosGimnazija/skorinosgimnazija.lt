@@ -1,8 +1,7 @@
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { cn } from '@/lib/utils'
 import { SiFacebook } from '@icons-pack/react-simple-icons'
-import { clsx } from 'clsx'
+import { clsx, cn } from 'cn'
 import { getTranslations } from 'next-intl/server'
 import React from 'react'
 

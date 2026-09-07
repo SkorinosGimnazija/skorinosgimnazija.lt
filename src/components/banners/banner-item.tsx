@@ -1,8 +1,8 @@
 import { Card, CardContent } from '@/components/ui/card'
 import type { BannerResponse } from '@/lib/models'
-import { clsx } from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
+import { clsx } from "cn";
 
 interface Props {
   banner: BannerResponse

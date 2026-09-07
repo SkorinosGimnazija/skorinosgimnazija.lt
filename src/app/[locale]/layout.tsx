@@ -4,7 +4,6 @@ import { Footer } from '@/components/footer/footer'
 import { Header } from '@/components/header/header'
 import { DesktopMenu } from '@/components/menu/desktop-menu'
 import { Spinner } from '@/components/ui/spinner'
-import { clsx } from 'clsx'
 import { CircleAlertIcon, CircleCheckIcon, CircleXIcon, InfoIcon } from 'lucide-react'
 import type { Metadata, Viewport } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
@@ -13,6 +12,7 @@ import { Rubik, Vollkorn_SC } from 'next/font/google'
 import React from 'react'
 import { Toaster } from 'sonner'
 import '../globals.css'
+import { clsx } from "cn";
 
 const sans = Rubik({
   variable: '--font-sans',

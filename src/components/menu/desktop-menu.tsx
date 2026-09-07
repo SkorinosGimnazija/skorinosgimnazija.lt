@@ -1,7 +1,7 @@
 import { Menu } from '@/components/menu/menu'
 import { Card, CardContent } from '@/components/ui/card'
-import { clsx } from 'clsx'
 import React from 'react'
+import { clsx } from "cn";
 
 export function DesktopMenu() {
   return (

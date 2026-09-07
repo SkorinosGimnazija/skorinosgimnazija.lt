@@ -2,12 +2,12 @@ import { Menu } from '@/components/menu/menu'
 import { MobileMenu } from '@/components/menu/mobile-menu'
 import { Link } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
-import { clsx } from 'clsx'
 import { FolderTreeIcon } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import React from 'react'
 import HeroImage from './hero.jpg'
+import { clsx } from "cn";
 
 export async function Header() {
   const t = await getTranslations()

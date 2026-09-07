@@ -1,5 +1,5 @@
-import { clsx } from 'clsx'
 import { type CSSProperties, type ReactNode } from 'react'
+import { clsx } from "cn";
 
 interface Props {
   className?: string;

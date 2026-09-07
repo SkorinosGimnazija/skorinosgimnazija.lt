@@ -1,7 +1,7 @@
 import { Link } from '@/i18n/navigation'
-import { clsx } from 'clsx'
 import { ExternalLinkIcon, FileTextIcon } from 'lucide-react'
 import React from 'react'
+import { clsx } from "cn";
 
 interface Props {
   href: string;

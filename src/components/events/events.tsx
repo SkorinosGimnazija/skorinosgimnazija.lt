@@ -5,9 +5,9 @@ import { ItemGroup } from '@/components/ui/item'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { getEvents } from '@/lib/api'
 import { SiGoogle } from '@icons-pack/react-simple-icons'
-import { clsx } from 'clsx'
 import { getLocale, getTranslations } from 'next-intl/server'
 import React from 'react'
+import { clsx } from "cn";
 
 export async function Events() {
   const locale = await getLocale()

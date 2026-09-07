@@ -3,8 +3,8 @@ import { NewsDate } from '@/components/news/news-date'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Link } from '@/i18n/navigation'
 import type { PostResponse } from '@/lib/models'
-import { clsx } from 'clsx'
 import Image from 'next/image'
+import { clsx } from 'cn'
 
 export function NewsPreviewItem({ post }: { post: PostResponse }) {
   const hasImage = Boolean(post.featuredImage)

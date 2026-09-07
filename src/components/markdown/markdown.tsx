@@ -6,9 +6,9 @@ import { PostMap } from '@/components/markdown/post-map'
 import { PostParentsRegistration } from '@/components/markdown/post-parents-registration'
 import { PostTable } from '@/components/markdown/post-table'
 import { PostYoutube } from '@/components/markdown/post-youtube'
-import { clsx } from 'clsx'
 import MarkdownJsx from 'markdown-to-jsx'
 import React from 'react'
+import { clsx } from "cn";
 
 export function Markdown({ children }: { children?: string | null }) {
   if (!children) {

@@ -3,8 +3,8 @@ import { NewsDate } from '@/components/news/news-date'
 import { NewsGallery } from '@/components/news/news-gallery'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import type { PostResponse } from '@/lib/models'
-import { clsx } from 'clsx'
 import React from 'react'
+import { clsx } from "cn";
 
 interface Props {
   post: PostResponse;

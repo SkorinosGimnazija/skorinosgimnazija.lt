@@ -3,9 +3,9 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { Link, usePathname } from '@/i18n/navigation'
 import { MenuResponse } from '@/lib/models'
-import { clsx } from 'clsx'
 import { ChevronDown } from 'lucide-react'
 import React, { useState } from 'react'
+import { clsx } from "cn";
 
 export function MenuItem({ item, depth = 0 }: { item: MenuResponse; depth?: number }) {
   const [open, setOpen] = useState(false)

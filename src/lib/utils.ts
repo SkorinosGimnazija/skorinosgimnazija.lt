@@ -1,10 +1,3 @@
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
 export function getPageRange(page: number, totalPages: number) {
   const siblings = 1
   const pages: (number | 'ellipsis')[] = [1]

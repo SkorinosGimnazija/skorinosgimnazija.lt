@@ -9,10 +9,10 @@ import { Spinner } from '@/components/ui/spinner'
 import { getAppointmentDates, getAppointmentTeachers, registerAppointment } from '@/lib/api'
 import { toEventLocalDateTime } from '@/lib/dates'
 import type { AppointmentDate, AppointmentHost, AppointmentRequest, AppointmentType } from '@/lib/models'
-import { clsx } from 'clsx'
 import { useTranslations } from 'next-intl'
 import { type ChangeEvent, type SubmitEvent, useState } from 'react'
 import { toast } from 'sonner'
+import { clsx } from "cn";
 
 interface Props {
   types: AppointmentType[]

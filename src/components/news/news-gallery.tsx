@@ -5,9 +5,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import { clsx } from 'clsx'
 import Image from 'next/image'
 import React from 'react'
+import { clsx } from "cn";
 
 interface Props {
   images?: string[];
