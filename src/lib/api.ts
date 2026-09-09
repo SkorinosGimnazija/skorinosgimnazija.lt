@@ -15,7 +15,8 @@ import type {
 } from '@/lib/models'
 
 const POSTS_PER_PAGE = 12
-const REVALIDATION = 60 * 60 * 24 // 24h
+const DEFAULT_REVALIDATION = 60 * 60 * 24 // 24h
+const EVENT_REVALIDATION = 60 * 60 // 1h
 const TAG = { POSTS: 'posts', BANNERS: 'banners', MENUS: 'menus', EVENTS: 'events' } as const
 
 async function fetchGet(path: string, config: NextFetchRequestConfig) {
@@ -46,7 +47,7 @@ async function fetchPost(path: string, body: object) {
 
 export async function getPosts(locale: string, page: string | number) {
   const response = await fetchGet(`/public/${locale}/posts?items=${POSTS_PER_PAGE}&page=${page}`,
-    { revalidate: REVALIDATION, tags: [TAG.POSTS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.POSTS] },
   )
 
   if (response.status === 400) {
@@ -63,7 +64,7 @@ export async function getPosts(locale: string, page: string | number) {
 
 export async function getPostById(locale: string, id: string) {
   const response = await fetchGet(`/public/posts/${id}`,
-    { revalidate: REVALIDATION, tags: [`${TAG.POSTS}:${id}`] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [`${TAG.POSTS}:${id}`] },
   )
 
   if (response.status === 404) {
@@ -81,7 +82,7 @@ export async function getPostById(locale: string, id: string) {
 export async function getPostBySlug(locale: string, slug: string[]) {
   const path = slug.join('/')
   const response = await fetchGet(`/public/${locale}/posts/menu/${path}`,
-    { revalidate: REVALIDATION, tags: [`${TAG.POSTS}:/${path}`] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [`${TAG.POSTS}:/${path}`] },
   )
 
   if (response.status === 404) {
@@ -93,7 +94,7 @@ export async function getPostBySlug(locale: string, slug: string[]) {
 
 export async function getMenus(locale: string) {
   const response = await fetchGet(`/public/${locale}/menus`,
-    { revalidate: REVALIDATION, tags: [TAG.MENUS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.MENUS] },
   )
 
   return await response.json() as MenuResponse[]
@@ -101,7 +102,7 @@ export async function getMenus(locale: string) {
 
 export async function getBanners(locale: string) {
   const response = await fetchGet(`/public/${locale}/featured`,
-    { revalidate: REVALIDATION, tags: [TAG.BANNERS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.BANNERS] },
   )
 
   return await response.json() as BannerResponse[]
@@ -113,7 +114,7 @@ export async function getEvents(locale: string) {
   }
 
   const response = await fetchGet(`/public/events/month/0`,
-    { revalidate: REVALIDATION, tags: [TAG.EVENTS] },
+    { revalidate: EVENT_REVALIDATION, tags: [TAG.EVENTS] },
   )
 
   return await response.json() as EventResponse[]
@@ -121,7 +122,7 @@ export async function getEvents(locale: string) {
 
 export async function getMenusMeta() {
   const response = await fetchGet('/public/meta/menus',
-    { revalidate: REVALIDATION, tags: [TAG.MENUS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.MENUS] },
   )
 
   return await response.json() as MetaResponse[]
@@ -129,7 +130,7 @@ export async function getMenusMeta() {
 
 export async function getPostsMeta() {
   const response = await fetchGet('/public/meta/posts',
-    { revalidate: REVALIDATION, tags: [TAG.POSTS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.POSTS] },
   )
 
   return await response.json() as MetaResponse[]
@@ -137,7 +138,7 @@ export async function getPostsMeta() {
 
 export async function getLocalesMeta() {
   const response = await fetchGet('/public/meta/locales',
-    { revalidate: REVALIDATION, tags: [TAG.POSTS] },
+    { revalidate: DEFAULT_REVALIDATION, tags: [TAG.POSTS] },
   )
 
   return await response.json() as MetaResponse[]
