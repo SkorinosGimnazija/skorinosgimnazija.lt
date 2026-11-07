@@ -16,6 +16,11 @@
     "previousPage": "Ankstesnis puslapis",
     "menu": "Meniu"
   },
+  "languages": {
+    "lt": "Lietuvių kalba",
+    "be": "Baltarusių kalba",
+    "en": "Anglų kalba"
+  },
   "calendar": {
     "add": "Pridėti prie Google kalendoriaus",
     "id": "c_2kn8sdmcsm9mm1bqbk3s1lfncg"

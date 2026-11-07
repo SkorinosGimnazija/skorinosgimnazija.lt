@@ -2,12 +2,12 @@ import { Menu } from '@/components/menu/menu'
 import { MobileMenu } from '@/components/menu/mobile-menu'
 import { Link } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
-import { FolderTreeIcon } from 'lucide-react'
+import { NetworkIcon } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import React from 'react'
 import HeroImage from './hero.jpg'
-import { clsx } from "cn";
+import { clsx } from 'cn'
 
 export async function Header() {
   const t = await getTranslations()
@@ -60,7 +60,7 @@ export async function Header() {
         <ul className="flex items-center gap-3">
           <li>
             <Link href={'/sitemap'} title={t('general.sitemap')}>
-              <FolderTreeIcon className="drop-shadow-md drop-shadow-black size-5" />
+              <NetworkIcon className="drop-shadow-md drop-shadow-black size-5" />
             </Link>
           </li>
           {routing.locales.map((locale) => (
@@ -69,6 +69,7 @@ export async function Header() {
                 href="/"
                 locale={locale}
                 hrefLang={locale}
+                title={t(`languages.${locale}`)}
                 prefetch={false} // required
               >
                 {locale}

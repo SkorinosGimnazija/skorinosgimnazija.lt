@@ -16,6 +16,11 @@
     "previousPage": "Previous page",
     "menu": "Menu"
   },
+  "languages": {
+    "lt": "Lithuanian language",
+    "be": "Belarusian language",
+    "en": "English language"
+  },
   "calendar": {
     "add": "Add to Google Calendar",
     "id": ""
