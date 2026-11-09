@@ -6,6 +6,11 @@
     "phone": "Tэл. +370 5 245 9127",
     "email": "rastine@skorinos.vilnius.lm.lt"
   },
+  "search": {
+    "search": "Пошук",
+    "label": "Шукаць",
+    "noResults": "Публікацый не знойдзена"
+  },
   "general": {
     "sitemap": "Карта сайта",
     "modified": "Абноўлена",
@@ -33,6 +38,6 @@
     "email": "Эл. п."
   },
   "request": {
-    "serverError": "Памылка сервера. Паспрабуйце пазней"
+    "serverError": "Памылка сервера. Паспрабуйце пазней."
   }
 }

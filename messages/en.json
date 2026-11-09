@@ -6,6 +6,11 @@
     "phone": "Phone +370 5 245 9127",
     "email": "rastine@skorinos.vilnius.lm.lt"
   },
+  "search": {
+    "search": "Search",
+    "label": "Find",
+    "noResults": "No posts found"
+  },
   "general": {
     "sitemap": "Sitemap",
     "modified": "Updated",
@@ -33,6 +38,6 @@
     "email": "E-mail"
   },
   "request": {
-    "serverError": "Server error. Try again later"
+    "serverError": "Server error. Try again later."
   }
 }

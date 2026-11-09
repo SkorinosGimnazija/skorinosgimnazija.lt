@@ -11,22 +11,24 @@ import type { PaginatedResponse } from '@/lib/models'
 import { getPageRange } from '@/lib/utils'
 import { getTranslations } from 'next-intl/server'
 
-type Props = Omit<PaginatedResponse<unknown>, 'items'>
-const PATH = '/news/page/'
+type Props = Omit<PaginatedResponse<unknown>, 'items'> & { searchQuery?: string }
 
-export async function NewsPagination({ page, totalPages, hasNextPage, hasPreviousPage }: Props) {
+const POSTS_PATH = '/news/page/'
+const SEARCH_PATH = '/search?'
+
+export async function NewsPagination({ page, totalPages, hasNextPage, hasPreviousPage, searchQuery }: Props) {
   if (totalPages <= 1) return null
 
   const t = await getTranslations('general')
   const pageRange = getPageRange(page, totalPages)
 
   return (
-    <Pagination className="mt-6 mb-16">
+    <Pagination className="mt-6 mb-6">
       <PaginationContent>
         {hasPreviousPage && (
           <PaginationItem>
             <PaginationPrevious
-              href={pageUrl(page - 1)}
+              href={pageUrl(page - 1, searchQuery)}
               aria-label={t('previousPage')}
               text=""
             />
@@ -39,7 +41,7 @@ export async function NewsPagination({ page, totalPages, hasNextPage, hasPreviou
               <PaginationEllipsis />
             ) : (
               <PaginationLink
-                href={pageUrl(item)}
+                href={pageUrl(item, searchQuery)}
                 isActive={item === page}
               >
                 {item}
@@ -51,7 +53,7 @@ export async function NewsPagination({ page, totalPages, hasNextPage, hasPreviou
         {hasNextPage && (
           <PaginationItem>
             <PaginationNext
-              href={pageUrl(page + 1)}
+              href={pageUrl(page + 1, searchQuery)}
               aria-label={t('nextPage')}
               text=""
             />
@@ -62,6 +64,11 @@ export async function NewsPagination({ page, totalPages, hasNextPage, hasPreviou
   )
 }
 
-function pageUrl(page: number) {
-  return page === 1 ? '/' : `${PATH}${page}`
+function pageUrl(page: number, searchQuery?: string) {
+  if (searchQuery) {
+    const params = new URLSearchParams({ q: searchQuery, page: String(page) })
+    return `${SEARCH_PATH}${params}`
+  }
+
+  return page === 1 ? '/' : `${POSTS_PATH}${page}`
 }

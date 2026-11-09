@@ -6,6 +6,11 @@
     "phone": "Tel. +370 5 245 9127",
     "email": "rastine@skorinos.vilnius.lm.lt"
   },
+  "search": {
+    "search": "Paieška",
+    "label": "Ieškoti",
+    "noResults": "Įrašų nerasta"
+  },
   "general": {
     "sitemap": "Svetainės medis",
     "modified": "Atnaujinta",
@@ -33,6 +38,6 @@
     "email": "El. p."
   },
   "request": {
-    "serverError": "Serverio klaida. Pabandykite vėliau"
+    "serverError": "Serverio klaida. Pabandykite vėliau."
   }
 }

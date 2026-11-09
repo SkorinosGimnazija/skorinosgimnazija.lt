@@ -62,6 +62,19 @@ export async function getPosts(locale: string, page: string | number) {
   return data
 }
 
+export async function searchPosts(locale: string, searchTerm: string, page: string | number) {
+  const term = encodeURIComponent(searchTerm)
+  const response = await fetchGet(
+    `/public/${locale}/posts/search?items=${POSTS_PER_PAGE}&page=${page}&searchTerm=${term}`, {},
+  )
+
+  if (!response.ok) {
+    throw new Error(`Search failed: GET ${response.url} (${response.status})`)
+  }
+
+  return await response.json() as PaginatedResponse<PostResponse>
+}
+
 export async function getPostById(locale: string, id: string) {
   const response = await fetchGet(`/public/posts/${id}`,
     { revalidate: DEFAULT_REVALIDATION, tags: [`${TAG.POSTS}:${id}`] },

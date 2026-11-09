@@ -2,7 +2,7 @@ import { Menu } from '@/components/menu/menu'
 import { MobileMenu } from '@/components/menu/mobile-menu'
 import { Link } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
-import { NetworkIcon } from 'lucide-react'
+import { NetworkIcon, SearchIcon } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import React from 'react'
@@ -58,6 +58,11 @@ export async function Header() {
           </h1>
         </div>
         <ul className="flex items-center gap-3">
+          <li>
+            <Link href="/search" title={t('search.search')}>
+              <SearchIcon className="drop-shadow-md drop-shadow-black size-5" />
+            </Link>
+          </li>
           <li>
             <Link href={'/sitemap'} title={t('general.sitemap')}>
               <NetworkIcon className="drop-shadow-md drop-shadow-black size-5" />

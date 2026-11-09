@@ -9,7 +9,7 @@ export async function Footer() {
   const t = await getTranslations()
 
   return (
-    <footer className="relative pt-16 mt-16">
+    <footer className="relative pt-16 mt-24">
       <div className={clsx(
         'container items-center',
         'grid grid-cols-1 md:grid-cols-2 gap-6',
