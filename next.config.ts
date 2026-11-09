@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*{/}?',
+        headers: [{ key: 'X-Accel-Buffering', value: 'no' }],
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
